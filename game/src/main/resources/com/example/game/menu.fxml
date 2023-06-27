@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="835.0" prefWidth="1535.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.game.MenuPage">
+   <children>
+      <ImageView fitHeight="770.0" fitWidth="842.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@27792-8-clash-of-clans-image.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="55.0" fitWidth="55.0" layoutX="1476.0" layoutY="8.0" onMouseClicked="#onClose" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img_79035.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="65.0" fitWidth="72.0" layoutX="1387.0" layoutY="3.0" onMouseClicked="#onPre" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@back+previous+icon-1320186815821271691.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="104.0" fitWidth="88.0" layoutX="907.0" layoutY="278.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@509-5099876_png-file-sword-fight-icon.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="1078.0" layoutY="296.0" mnemonicParsing="false" onMouseClicked="#onAttack" prefHeight="55.0" prefWidth="129.0" text="Attack!">
+         <font>
+            <Font name="Sylfaen" size="24.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="110.0" fitWidth="130.0" layoutX="896.0" layoutY="417.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@map-131983784333970726.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="1078.0" layoutY="444.0" mnemonicParsing="false" onMouseClicked="#onMaps" prefHeight="55.0" prefWidth="129.0" text="Maps!">
+         <font>
+            <Font name="Sylfaen" size="24.0" />
+         </font>
+      </Button>
+      <Button layoutX="1078.0" layoutY="575.0" mnemonicParsing="false" onMouseClicked="#onHeroes" prefHeight="55.0" prefWidth="129.0" text="Heroes!">
+         <font>
+            <Font name="Sylfaen" size="24.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="104.0" fitWidth="110.0" layoutX="899.0" layoutY="132.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img_568656.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="1078.0" layoutY="156.0" mnemonicParsing="false" onMouseClicked="#onProfile" prefHeight="55.0" prefWidth="129.0" text="Profile!">
+         <font>
+            <Font name="Sylfaen" size="24.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="390.0" fitWidth="335.0" layoutX="1226.0" layoutY="439.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@27800-4-clash-of-clans-transparent-background.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="155.0" fitWidth="158.0" layoutX="873.0" layoutY="528.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@download.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="835.0" prefWidth="1535.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.game.LoginPage">
+   <children>
+      <ImageView fitHeight="676.0" fitWidth="657.0" layoutX="14.0" layoutY="157.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@27800-4-clash-of-clans-transparent-background.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="ID" layoutX="1069.0" layoutY="157.0" prefHeight="54.0" prefWidth="282.0" promptText="Enter your ID...">
+         <font>
+            <Font name="Sylfaen" size="22.0" />
+         </font>
+      </TextField>
+      <ImageView fitHeight="46.0" fitWidth="49.0" layoutX="1484.0" layoutY="14.0" onMouseClicked="#onClose" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img_79035.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="127.0" fitWidth="122.0" layoutX="866.0" layoutY="123.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@id-icon-png-20.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="100.0" fitWidth="95.0" layoutX="884.0" layoutY="245.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@icon-password-3.jpg" />
+         </image>
+      </ImageView>
+      <Text layoutX="1069.0" layoutY="401.0" onMouseClicked="#onLogin" strokeType="OUTSIDE" strokeWidth="0.0" text="Login!">
+         <font>
+            <Font name="Sylfaen" size="36.0" />
+         </font>
+      </Text>
+      <Text layoutX="1217.0" layoutY="401.0" onMouseClicked="#onSignup" strokeType="OUTSIDE" strokeWidth="0.0" text="Signup!">
+         <font>
+            <Font name="Sylfaen" size="36.0" />
+         </font>
+      </Text>
+      <PasswordField layoutX="1069.0" layoutY="268.0" onMouseClicked="#onPassword" prefHeight="54.0" prefWidth="282.0" promptText="Enter your password...">
+         <font>
+            <Font name="Sylfaen" size="24.0" />
+         </font>
+      </PasswordField>
+      <AnchorPane fx:id="mapsID" layoutX="843.0" layoutY="445.0" prefHeight="375.0" prefWidth="451.0" visible="false">
+         <children>
+            <ImageView fx:id="cityMap" fitHeight="141.0" fitWidth="173.0" layoutX="14.0" layoutY="29.0" onMouseClicked="#onCityMap" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@-5823628951187209297_121%5B52%5D.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="blueMap" fitHeight="135.0" fitWidth="173.0" layoutX="14.0" layoutY="182.0" onMouseClicked="#onBlueMap" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@-5823628951187209299_121%5B50%5D.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="greenMap" fitHeight="134.0" fitWidth="182.0" layoutX="207.0" layoutY="29.0" onMouseClicked="#onGreenMap" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@-5823628951187209298_121%5B51%5D.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="iceMap" fitHeight="130.0" fitWidth="173.0" layoutX="210.0" layoutY="174.0" onMouseClicked="#onIceMap" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@-5823628951187209301_121%5B49%5D.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
