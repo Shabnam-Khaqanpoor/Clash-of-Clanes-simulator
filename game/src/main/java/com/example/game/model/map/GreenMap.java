@@ -7,15 +7,21 @@ import java.util.ArrayList;
 public class GreenMap extends Map{
 
     private ImageView mapImage;
+
+    public static final String ID="greenMap";
     private ArrayList<Building> buildings = new ArrayList<>();
     private int limitationOfSoldiers;
     public GreenMap(ImageView mapImage) {
-        super(mapImage);
-        this.limitationOfSoldiers=15;
+        super(mapImage,ID);
+        setLimitationOfSoldiers(15);
 //        this.buildings.add();
 //        this.buildings.add();
 //        this.buildings.add();
 //        this.buildings.add();
+    }
+
+    public void setLimitationOfSoldiers(int limitationOfSoldiers) {
+        this.limitationOfSoldiers = limitationOfSoldiers;
     }
 
     @Override

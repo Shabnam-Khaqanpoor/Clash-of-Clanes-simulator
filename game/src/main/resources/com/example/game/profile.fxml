@@ -1,14 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.game.ProfilePage"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane onMouseEntered="#onEnterd" prefHeight="835.0" prefWidth="1535.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.game.ProfilePage">
+   <children>
+      <ImageView fitHeight="384.0" fitWidth="489.0" layoutX="116.0" layoutY="164.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@clash-of-clans-icon-png-24.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="59.0" layoutX="1322.0" layoutY="15.0" onMouseClicked="#onPre" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@back+previous+icon-1320186815821271691.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="59.0" fitWidth="59.0" layoutX="1407.0" layoutY="12.0" onMouseClicked="#onClose" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img_79035.png" />
+         </image>
+      </ImageView>
+      <Text fx:id="profile" layoutX="723.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="471.20001220703125">
+         <font>
+            <Font name="Sylfaen" size="48.0" />
+         </font>
+      </Text>
+      <ImageView fx:id="map" fitHeight="241.0" fitWidth="471.0" layoutX="723.0" layoutY="477.0" pickOnBounds="true" preserveRatio="true" />
+      <Text fx:id="mapInfo" layoutX="1135.0" layoutY="603.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="245.60003662109375">
+         <font>
+            <Font name="Sylfaen" size="24.0" />
+         </font>
+      </Text>
+      <Text fx:id="mapInfo1" layoutX="571.0" layoutY="603.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your map:" wrappingWidth="116.00006103515625">
+         <font>
+            <Font name="Sylfaen" size="24.0" />
+         </font>
+      </Text>
+   </children>
 </AnchorPane>

@@ -1,6 +1,8 @@
 package com.example.game.model;
 import com.example.game.model.map.Map;
 
+import java.util.Random;
+
 public class Player {
     private String ID;
     private String pass;
@@ -9,10 +11,11 @@ public class Player {
     private int lost;
     private Map map;
 
-    public Player(String ID, String pass, Map map) {
+    public Player(String ID, String pass, Map map,int level) {
         this.ID=ID;
         this.pass=pass;
         this.map=map;
+        this.level= level;
     }
 
     public String getID() {
@@ -51,9 +54,7 @@ public class Player {
         this.level = level;
     }
 
-    public void setWin(int win) {
-        this.win = win;
-    }
+    public void setWin(int win) {this.win = win;}
 
     public void setLost(int lost) {
         this.lost = lost;

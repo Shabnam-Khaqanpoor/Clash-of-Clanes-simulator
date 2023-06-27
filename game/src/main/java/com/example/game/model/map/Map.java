@@ -9,8 +9,16 @@ public abstract class Map {
     private ArrayList<Building> buildings = new ArrayList<>();
     private int limitationOfSoldiers;
 
-    public Map(ImageView mapImage) {
+    private String ID;
+
+    public String getID(){
+        return this.ID;
+    }
+
+
+    public Map(ImageView mapImage,String ID) {
         this.mapImage = mapImage;
+        this.ID=ID;
     }
 
     public ImageView getMapImage() {
@@ -27,6 +35,6 @@ public abstract class Map {
 
     @Override
     public String toString() {
-        return "limitationOfSoldiers= " + limitationOfSoldiers;
+        return "Limitation of soldiers= " + limitationOfSoldiers;
     }
 }
