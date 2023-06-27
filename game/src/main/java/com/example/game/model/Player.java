@@ -13,7 +13,6 @@ public class Player {
         this.ID=ID;
         this.pass=pass;
         this.map=map;
-
     }
 
     public String getID() {

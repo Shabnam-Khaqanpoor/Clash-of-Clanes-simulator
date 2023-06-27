@@ -4,8 +4,8 @@ import javafx.scene.image.ImageView;
 
 import java.util.ArrayList;
 
-public class Hero2 extends Hero{
-    public Hero2(ArrayList<ImageView> imageViews, int speed, int power, AttackType attackType, int attackRadius, int health, int attackStream) {
+public class Barbarin extends Hero{
+    public Barbarin(ArrayList<ImageView> imageViews, int speed, int power, AttackType attackType, int attackRadius, int health, int attackStream) {
         super(imageViews, speed, power, attackType, attackRadius, health, attackStream);
     }
 

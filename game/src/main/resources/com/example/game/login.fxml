@@ -20,7 +20,7 @@
             <Font name="Sylfaen" size="22.0" />
          </font>
       </TextField>
-      <ImageView fitHeight="46.0" fitWidth="49.0" layoutX="1484.0" layoutY="14.0" onMouseClicked="#onClose" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="46.0" fitWidth="49.0" layoutX="1454.0" layoutY="26.0" onMouseClicked="#onClose" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@img_79035.png" />
          </image>
@@ -45,7 +45,7 @@
             <Font name="Sylfaen" size="36.0" />
          </font>
       </Text>
-      <PasswordField layoutX="1069.0" layoutY="268.0" onMouseClicked="#onPassword" prefHeight="54.0" prefWidth="282.0" promptText="Enter your password...">
+      <PasswordField fx:id="password" layoutX="1069.0" layoutY="268.0" prefHeight="54.0" prefWidth="282.0" promptText="Enter your password...">
          <font>
             <Font name="Sylfaen" size="24.0" />
          </font>
@@ -54,22 +54,22 @@
          <children>
             <ImageView fx:id="cityMap" fitHeight="141.0" fitWidth="173.0" layoutX="14.0" layoutY="29.0" onMouseClicked="#onCityMap" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@-5823628951187209297_121%5B52%5D.jpg" />
+                  <Image url="@-5823628951187209297_121[52].jpg" />
                </image>
             </ImageView>
             <ImageView fx:id="blueMap" fitHeight="135.0" fitWidth="173.0" layoutX="14.0" layoutY="182.0" onMouseClicked="#onBlueMap" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@-5823628951187209299_121%5B50%5D.jpg" />
+                  <Image url="@-5823628951187209299_121[50].jpg" />
                </image>
             </ImageView>
             <ImageView fx:id="greenMap" fitHeight="134.0" fitWidth="182.0" layoutX="207.0" layoutY="29.0" onMouseClicked="#onGreenMap" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@-5823628951187209298_121%5B51%5D.jpg" />
+                  <Image url="@-5823628951187209298_121[51].jpg" />
                </image>
             </ImageView>
             <ImageView fx:id="iceMap" fitHeight="130.0" fitWidth="173.0" layoutX="210.0" layoutY="174.0" onMouseClicked="#onIceMap" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@-5823628951187209301_121%5B49%5D.jpg" />
+                  <Image url="@-5823628951187209301_121[49].jpg" />
                </image>
             </ImageView>
          </children>

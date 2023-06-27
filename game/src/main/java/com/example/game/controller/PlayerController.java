@@ -62,7 +62,7 @@ public class PlayerController {
 
     public void saveToDatabase(Player player) throws Exception {
         //connected to the database
-        String sql = "INSERT INTO `player` (`ID`,`password`,`map`) VALUES ('" + player.getID() + "','" + player.getPass() + "','" + player.getMap().getMapID() + "')";
+        String sql = "INSERT INTO `player` (`ID`,`password`,`map`) VALUES ('" + player.getID() + "','" + player.getPass() + "','" + player.getMap().getMapImage() + "')";
         Statement s = connection().prepareStatement(sql);
         s.execute(sql);
         connection().close();

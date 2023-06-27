@@ -1,18 +1,20 @@
 package com.example.game.model.map;
 
+import javafx.scene.image.ImageView;
+
 import java.util.ArrayList;
 
 public abstract class Map {
-    private String mapID;
+    private ImageView mapImage;
     private ArrayList<Building> buildings = new ArrayList<>();
     private int limitationOfSoldiers;
 
-    public Map(String mapID) {
-        this.mapID = mapID;
+    public Map(ImageView mapImage) {
+        this.mapImage = mapImage;
     }
 
-    public String getMapID() {
-        return this.mapID;
+    public ImageView getMapImage() {
+        return this.mapImage;
     }
 
     public ArrayList<Building> getBuildings() {
@@ -25,8 +27,6 @@ public abstract class Map {
 
     @Override
     public String toString() {
-        return "mapID= " + mapID +
-                "\nbuildings= " + buildings +
-                "\nlimitationOfSoldiers= " + limitationOfSoldiers;
+        return "limitationOfSoldiers= " + limitationOfSoldiers;
     }
 }

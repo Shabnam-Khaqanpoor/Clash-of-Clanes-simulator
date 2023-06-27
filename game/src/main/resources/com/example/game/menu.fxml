@@ -58,11 +58,6 @@
             <Font name="Sylfaen" size="24.0" />
          </font>
       </Button>
-      <ImageView fitHeight="390.0" fitWidth="335.0" layoutX="1226.0" layoutY="439.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@27800-4-clash-of-clans-transparent-background.png" />
-         </image>
-      </ImageView>
       <ImageView fitHeight="155.0" fitWidth="158.0" layoutX="873.0" layoutY="528.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@download.png" />

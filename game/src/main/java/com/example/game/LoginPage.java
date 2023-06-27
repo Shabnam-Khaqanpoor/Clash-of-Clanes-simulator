@@ -83,8 +83,9 @@ public class LoginPage {
     @FXML
     void onBlueMap(MouseEvent event) {
         try {
-            BlueMap blueMap1=new BlueMap(blueMap.getId());
+            BlueMap blueMap1=new BlueMap(blueMap);
             playerController.signUp(ID.getText(), password.getText(), blueMap1);
+            newPage("menu", "Menu page", event);
         } catch (Exception e) {
             alert.setContentText("Your ID should be unique and your password should be more than6!");
             alert.show();
@@ -94,8 +95,9 @@ public class LoginPage {
     @FXML
     void onCityMap(MouseEvent event) {
         try {
-            CityMap cityMap1=new CityMap( cityMap.getId());
+            CityMap cityMap1=new CityMap(cityMap);
             playerController.signUp(ID.getText(), password.getText(),cityMap1);
+            newPage("menu", "Menu page", event);
         } catch (Exception e) {
             alert.setContentText("Your ID should be unique and your password should be more than6!");
             alert.show();
@@ -105,8 +107,9 @@ public class LoginPage {
     @FXML
     void onGreenMap(MouseEvent event) {
         try {
-            GreenMap greenMap1=new GreenMap(greenMap.getId());
+            GreenMap greenMap1=new GreenMap(greenMap);
             playerController.signUp(ID.getText(), password.getText(), greenMap1);
+            newPage("menu", "Menu page", event);
         } catch (Exception e) {
             alert.setContentText("Your ID should be unique and your password should be more than6!");
             alert.show();
@@ -116,7 +119,7 @@ public class LoginPage {
     @FXML
     void onIceMap(MouseEvent event) {
         try {
-            IceMap iceMap1=new IceMap(iceMap.getId());
+            IceMap iceMap1=new IceMap(iceMap);
             playerController.signUp(ID.getText(), password.getText(), iceMap1);
             newPage("menu", "Menu page", event);
         } catch (Exception e) {

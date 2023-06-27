@@ -4,8 +4,8 @@ import javafx.scene.image.ImageView;
 
 import java.util.ArrayList;
 
-public class Hero1 extends Hero{
-    public Hero1(ArrayList<ImageView> imageViews, int speed, int power, AttackType attackType, int attackRadius, int health, int attackStream) {
+public class Archer extends Hero{
+    public Archer(ArrayList<ImageView> imageViews, int speed, int power, AttackType attackType, int attackRadius, int health, int attackStream) {
         super(imageViews, speed, power, attackType, attackRadius, health, attackStream);
     }
 
@@ -43,5 +43,4 @@ public class Hero1 extends Hero{
     public String toString() {
         return super.toString();
     }
-
 }
