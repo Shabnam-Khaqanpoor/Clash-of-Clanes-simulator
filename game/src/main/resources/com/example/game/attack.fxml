@@ -1,14 +1,138 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.game.AttackPage"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="835.0" prefWidth="1535.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.game.AttackPage">
+   <children>
+      <ImageView fitHeight="463.0" fitWidth="588.0" layoutX="42.0" layoutY="37.0" onMouseClicked="#onCity" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@-5823628951187209297_121[52].jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="456.0" fitWidth="579.0" layoutX="806.0" layoutY="37.0" onMouseClicked="#onGreen" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@-5823628951187209299_121[50].jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="391.0" fitWidth="604.0" layoutX="209.0" layoutY="428.0" onMouseClicked="#onBlue" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@-5823628951187209298_121[51].jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="413.0" fitWidth="554.0" layoutX="991.0" layoutY="396.0" onMouseClicked="#onIce" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@-5823628951187209301_121[49].jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="27.0" fitWidth="34.0" layoutX="1485.0" layoutY="24.0" onMouseClicked="#onClose" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img_79035.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="35.0" fitWidth="39.0" layoutX="1436.0" layoutY="20.0" onMouseClicked="#onPre" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@back+previous+icon-1320186815821271691.png" />
+         </image>
+      </ImageView>
+      <Text fx:id="archerTower" fill="#417ca6" layoutX="14.0" layoutY="590.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="181.33673095703125">
+         <font>
+            <Font name="Sylfaen" size="24.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="77.0" fitWidth="80.0" layoutX="251.0" layoutY="180.0" onMouseClicked="#onCity2" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@town_hall_level11_ingame_icon.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="77.0" fitWidth="80.0" layoutX="1180.0" layoutY="534.0" onMouseClicked="#onIce3" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@town_hall_level11_ingame_icon.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="98.0" fitWidth="77.0" layoutX="407.0" layoutY="542.0" onMouseClicked="#onBlue3" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Archer_Tower.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="86.0" fitWidth="53.0" layoutX="354.0" layoutY="183.0" onMouseClicked="#onCity1" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Archer_Tower.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="88.0" fitWidth="86.0" layoutX="1057.0" layoutY="150.0" onMouseClicked="#onGreen1" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Clash-of-clans-Mortar.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="88.0" fitWidth="86.0" layoutX="479.0" layoutY="525.0" onMouseClicked="#onBlue1" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Clash-of-clans-Mortar.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="72.0" fitWidth="86.0" layoutX="1067.0" layoutY="236.0" onMouseClicked="#onGreen2" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@imgbin_clash-of-clans-youtube-video-gaming-clan-clan-war-building-png.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="72.0" fitWidth="86.0" layoutX="1279.0" layoutY="537.0" onMouseClicked="#onIce1" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@imgbin_clash-of-clans-youtube-video-gaming-clan-clan-war-building-png.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="88.0" fitWidth="86.0" layoutX="293.0" layoutY="244.0" onMouseClicked="#onCity3" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Clash-of-clans-Mortar.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="77.0" fitWidth="80.0" layoutX="1234.0" layoutY="591.0" onMouseClicked="#onIce2" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@town_hall_level11_ingame_icon.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="72.0" fitWidth="86.0" layoutX="479.0" layoutY="617.0" onMouseClicked="#onBlue2" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@imgbin_clash-of-clans-youtube-video-gaming-clan-clan-war-building-png.png" />
+         </image>
+      </ImageView>
+      <Text fx:id="armyBuilding" fill="#417ca6" layoutX="639.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="154.13671875">
+         <font>
+            <Font name="Sylfaen" size="24.0" />
+         </font>
+      </Text>
+      <Text fx:id="townhall" fill="#417ca6" layoutX="790.0" layoutY="596.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="187.7366943359375">
+         <font>
+            <Font name="Sylfaen" size="24.0" />
+         </font>
+      </Text>
+      <Text fx:id="defensiveBuilding" fill="#417ca6" layoutX="1394.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="132.53662109375">
+         <font>
+            <Font name="Sylfaen" size="18.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="86.0" fitWidth="53.0" layoutX="78.0" layoutY="489.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Archer_Tower.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="72.0" fitWidth="86.0" layoutX="677.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@imgbin_clash-of-clans-youtube-video-gaming-clan-clan-war-building-png.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="77.0" fitWidth="80.0" layoutX="845.0" layoutY="499.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@town_hall_level11_ingame_icon.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="72.0" fitWidth="64.0" layoutX="1439.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Clash-of-clans-Mortar.png" />
+         </image>
+      </ImageView>
+   </children>
 </AnchorPane>

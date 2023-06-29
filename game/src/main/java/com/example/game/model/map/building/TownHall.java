@@ -6,13 +6,29 @@ import javafx.scene.image.ImageView;
 import javax.swing.*;
 
 public class TownHall extends Building{
-    static final ImageView buildingImage=new ImageView(new Image(new ImageIcon("town_hall_level11_ingame_icon.png").getImage().toString()));
+    static final ImageView buildingImage=new ImageView(new Image("town_hall_level11_ingame_icon.png"));
 
     static final BuildingType buildingType=BuildingType.NORMAL;
     static final int health=900;
 
-    public TownHall() {
-        super(buildingImage, buildingType, health);
+    private double x;
+    private double y;
+
+
+    public TownHall(double x,double y) {
+        super(buildingImage, buildingType, health,x,y);
+    }
+
+    public double getX() {
+        return super.getX();
+    }
+
+    public void setXY(double x,double y) {
+        super.setXY(x,y);
+    }
+
+    public double getY() {
+        return super.getY();
     }
 
     @Override

@@ -1,6 +1,9 @@
 package com.example.game.model.map;
 
+import com.example.game.model.map.building.ArcherTower;
 import com.example.game.model.map.building.Building;
+import com.example.game.model.map.building.DefensiveBuilding;
+import com.example.game.model.map.building.TownHall;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -14,10 +17,12 @@ public class CityMap extends Map{
     public CityMap(Image mapImage) {
         super(mapImage,ID);
         setLimitationOfSoldiers(20);
-//        this.buildings.add();
-//        this.buildings.add();
-//        this.buildings.add();
-//        this.buildings.add();
+        TownHall townHall=new TownHall(200,200);
+        this.buildings.add(townHall);
+        ArcherTower archerTower = new ArcherTower(220,200);
+        this.buildings.add(archerTower);
+        DefensiveBuilding defensiveBuilding = new DefensiveBuilding(210,250);
+        this.buildings.add(defensiveBuilding);
     }
 
     public void setLimitationOfSoldiers(int limitationOfSoldiers) {

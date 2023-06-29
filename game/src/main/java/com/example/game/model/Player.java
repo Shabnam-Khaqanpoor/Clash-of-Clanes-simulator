@@ -18,6 +18,14 @@ public class Player {
         this.level= level;
     }
 
+    public Player(String ID, String pass, int level, int win, int lost) {
+        this.ID = ID;
+        this.pass = pass;
+        this.level = level;
+        this.win = win;
+        this.lost = lost;
+    }
+
     public String getID() {
         return this.ID;
     }

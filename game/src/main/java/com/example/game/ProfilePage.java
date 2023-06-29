@@ -28,8 +28,8 @@ public class ProfilePage {
     @FXML
     void onEnterd(MouseEvent event) {
         profile.setText(PlayerController.onlinePlayer.toString());
-        mapInfo.setText(PlayerController.onlinePlayer.getMap().toString());
         map.setImage(PlayerController.onlinePlayer.getMap().getMapImage());
+        mapInfo.setText(PlayerController.onlinePlayer.getMap().toString());
     }
 
     void newPage(String fxml,String title,MouseEvent event) throws IOException {

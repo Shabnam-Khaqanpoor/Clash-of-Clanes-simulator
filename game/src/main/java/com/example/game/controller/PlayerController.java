@@ -1,15 +1,16 @@
 package com.example.game.controller;
-
 import com.example.game.model.Player;
 import com.example.game.model.map.*;
 import javafx.scene.image.Image;
 
-import javax.swing.*;
+import java.net.URL;
 import java.sql.*;
-import java.util.Objects;
 import java.util.Random;
+import java.util.ResourceBundle;
 
-public class PlayerController {
+import javafx.fxml.Initializable;
+
+public class PlayerController implements Initializable {
 
     public static Player onlinePlayer;
     Random random = new Random();
@@ -26,18 +27,20 @@ public class PlayerController {
         }
     }
 
-    public boolean login(String ID, String pass) {
+    public boolean login(String ID, String pass){
         boolean find=false;
         try {
             ResultSet rs = readDatabase();
             while (rs.next()) {
                 if (rs.getString("ID").equals(ID) && rs.getString("password").equals(pass)) {
+                    onlinePlayer=new Player(ID,pass,rs.getInt("level"),rs.getInt("win"),rs.getInt("lost"));
+
                     find=true;
                     switch (rs.getString("map")) {
-                        case "cityMap" -> addOnlinePlayer (ID,pass,new CityMap(new Image(new ImageIcon("-5823628951187209301_121[52].jpg").getImage().toString())),rs.getInt("win"),rs.getInt("lost"),rs.getInt("level"));
-                        case "greenMap" -> addOnlinePlayer(ID,pass,new GreenMap(new Image(Objects.requireNonNull(getClass().getResource("-5823628951187209301_121[51].jpg")).toExternalForm())),rs.getInt("win"),rs.getInt("lost"),rs.getInt("level"));
-                        case "blueMap" -> addOnlinePlayer (ID,pass,new BlueMap(new Image(Objects.requireNonNull(getClass().getResource("-5823628951187209301_121[50].jpg")).toExternalForm())),rs.getInt("win"),rs.getInt("lost"),rs.getInt("level"));
-                        case "iceMap" -> addOnlinePlayer  (ID,pass,new IceMap(new Image(new ImageIcon("-5823628951187209301_121[49].jpg").getImage().toString())),rs.getInt("win"),rs.getInt("lost"),rs.getInt("level"));
+                        case "cityMap" -> onlinePlayer.setMap(new CityMap(new Image("-5823628951187209301_121[52].jpg")));
+                        case "greenMap" ->onlinePlayer.setMap(new GreenMap(new Image("-5823628951187209301_121[51].jpg")));
+                        case "blueMap" -> onlinePlayer.setMap(new BlueMap(new Image("-5823628951187209301_121[50].jpg")));
+                        case "iceMap" ->  onlinePlayer.setMap(new IceMap(new Image("-5823628951187209301_121[49].jpg")));
                     }
                 }
             }
@@ -45,12 +48,6 @@ public class PlayerController {
             e.printStackTrace();
         }
         return find;
-    }
-
-    void addOnlinePlayer(String ID,String pass,Map map,int win,int lost,int level) throws SQLException {
-        onlinePlayer=new Player(ID, pass, map, level);
-        onlinePlayer.setLost(lost);
-        onlinePlayer.setWin(win);
     }
 
     public Connection connection() throws ClassNotFoundException, SQLException {
@@ -88,5 +85,10 @@ public class PlayerController {
         connection().close();
 
         //saved to database
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
     }
 }

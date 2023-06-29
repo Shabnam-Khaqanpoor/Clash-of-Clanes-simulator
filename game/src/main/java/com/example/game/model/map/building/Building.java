@@ -8,14 +8,31 @@ public abstract class Building {
     private BuildingType buildingType;
     private int health;
     private int power;
-
     private int attackRadius;
     private long attackStream;
 
-    public Building(ImageView buildingImage, BuildingType buildingType, int health) {
+    private double x=0;
+    private double y=0;
+
+    public Building(ImageView buildingImage, BuildingType buildingType, int health,double x,double y) {
         this.buildingImage = buildingImage;
+        buildingImage.setX(x);
+        buildingImage.setY(y);
         this.buildingType = buildingType;
         this.health = health;
+    }
+
+    public double getX() {
+        return this.x;
+    }
+
+    public void setXY(double x,double y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    public double getY() {
+        return this.y;
     }
 
     public void setBuildingType(BuildingType buildingType) {
@@ -68,10 +85,10 @@ public abstract class Building {
 
     @Override
     public String toString() {
-        return "buildingType = " + buildingType +
-                "\nhealth = " + health +
-                "\npower = " + power +
-                "\nattackRadius = " + attackRadius +
-                "\nattackStream = " + attackStream;
+        return "buildingType : " + buildingType +
+                "\nhealth : " + health +
+                "\npower : " + power +
+                "\nattackRadius : " + attackRadius +
+                "\nattackStream : " + attackStream;
     }
 }

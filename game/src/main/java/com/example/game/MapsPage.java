@@ -41,13 +41,13 @@ public class MapsPage {
 
     @FXML
     void onEntered(MouseEvent event) {
-        ArcherTower archerTower1=new ArcherTower();
+        ArcherTower archerTower1=new ArcherTower(0,0);
         archerTower.setText(archerTower1.toString());
-        TownHall townHall=new TownHall();
+        TownHall townHall=new TownHall(0,0);
         townhall.setText(townHall.toString());
-        ArmyBuilding armyBuilding1=new ArmyBuilding();
+        ArmyBuilding armyBuilding1=new ArmyBuilding(0,0);
         armyBuilding.setText(armyBuilding1.toString());
-        DefensiveBuilding defensiveBuilding1=new DefensiveBuilding();
+        DefensiveBuilding defensiveBuilding1=new DefensiveBuilding(0,0);
         defensiveBuilding.setText(defensiveBuilding1.toString());
     }
 

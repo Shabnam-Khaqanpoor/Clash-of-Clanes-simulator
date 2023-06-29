@@ -6,7 +6,7 @@ import javafx.scene.image.ImageView;
 import javax.swing.*;
 
 public class ArmyBuilding extends Building{
-    static final ImageView buildingImage=new ImageView(new Image(new ImageIcon("imgbin_clash-of-clans-youtube-video-gaming-clan-clan-war-building-png.png").getImage().toString()));
+    static final ImageView buildingImage=new ImageView(new Image("imgbin_clash-of-clans-youtube-video-gaming-clan-clan-war-building-png.png"));
 
     static final BuildingType buildingType=BuildingType.DEFENSIVE;
     static final int health=800;
@@ -14,12 +14,27 @@ public class ArmyBuilding extends Building{
 
     static final int attackRadius=5;
     static final long attackStream=8000;
+    private double x;
+    private double y;
 
-    public ArmyBuilding() {
-        super(buildingImage, buildingType, health);
+
+    public ArmyBuilding(double x,double y) {
+        super(buildingImage, buildingType, health,x,y);
         super.setPower(power);
         super.setAttackRadius(attackRadius);
         super.setAttackStream(attackStream);
+    }
+
+    public double getX() {
+        return super.getX();
+    }
+
+    public void setXY(double x,double y) {
+        super.setXY(x,y);
+    }
+
+    public double getY() {
+        return super.getY();
     }
 
     @Override

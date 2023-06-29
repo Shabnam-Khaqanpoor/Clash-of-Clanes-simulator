@@ -24,7 +24,7 @@ public class MenuPage {
 
     @FXML
     void onAttack(MouseEvent event) throws IOException {
-        newPage("attack","Attack Page!",event);
+        newPage("attack","Choose a map!",event);
     }
 
     @FXML

@@ -36,6 +36,6 @@ public abstract class Map {
 
     @Override
     public String toString() {
-        return "Limitation of soldiers= " + this.limitationOfSoldiers;
+        return "Limitation of soldiers : " + this.limitationOfSoldiers;
     }
 }
