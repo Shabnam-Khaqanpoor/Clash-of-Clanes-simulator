@@ -5,17 +5,24 @@ import javafx.scene.image.ImageView;
 import java.util.ArrayList;
 
 public class Giant extends Hero{
-    public Giant(ArrayList<ImageView> imageViews, int speed, int power, AttackType attackType, int attackRadius, int health, int attackStream) {
-        super(imageViews, speed, power, attackType, attackRadius, health, attackStream);
+
+    static final long speed = 7000;
+    static final int power = 70;
+    static final AttackType attackType =AttackType.ATTACK;
+    static final int attackRadius= 3;
+    static final int health = 600;
+    static final long attackStream = 3000;
+    public Giant() {
+        super( speed, power, attackType, attackRadius, health, attackStream);
     }
 
     @Override
-    public int getAttackStream() {
+    public long getAttackStream() {
         return super.getAttackStream();
     }
 
     @Override
-    public int getSpeed() {
+    public long getSpeed() {
         return super.getSpeed();
     }
 

@@ -13,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -83,7 +84,7 @@ public class LoginPage {
     @FXML
     void onBlueMap(MouseEvent event) {
         try {
-            BlueMap blueMap1=new BlueMap(blueMap);
+            BlueMap blueMap1=new BlueMap(new Image(Objects.requireNonNull(getClass().getResource("-5823628951187209301_121[50].jpg")).toExternalForm()));
             playerController.signUp(ID.getText(), password.getText(), blueMap1);
             newPage("menu", "Menu page", event);
         } catch (Exception e) {
@@ -95,7 +96,7 @@ public class LoginPage {
     @FXML
     void onCityMap(MouseEvent event) {
         try {
-            CityMap cityMap1=new CityMap(cityMap);
+            CityMap cityMap1=new CityMap(new Image(Objects.requireNonNull(getClass().getResource("-5823628951187209301_121[52].jpg")).toExternalForm()));
             playerController.signUp(ID.getText(), password.getText(),cityMap1);
             newPage("menu", "Menu page", event);
         } catch (Exception e) {
@@ -107,7 +108,7 @@ public class LoginPage {
     @FXML
     void onGreenMap(MouseEvent event) {
         try {
-            GreenMap greenMap1=new GreenMap(greenMap);
+            GreenMap greenMap1=new GreenMap(new Image(Objects.requireNonNull(getClass().getResource("-5823628951187209301_121[51].jpg")).toExternalForm()));
             playerController.signUp(ID.getText(), password.getText(), greenMap1);
             newPage("menu", "Menu page", event);
         } catch (Exception e) {
@@ -119,7 +120,7 @@ public class LoginPage {
     @FXML
     void onIceMap(MouseEvent event) {
         try {
-            IceMap iceMap1=new IceMap(iceMap);
+            IceMap iceMap1=new IceMap(new Image(Objects.requireNonNull(getClass().getResource("-5823628951187209301_121[49].jpg")).toExternalForm()));
             playerController.signUp(ID.getText(), password.getText(), iceMap1);
             newPage("menu", "Menu page", event);
         } catch (Exception e) {

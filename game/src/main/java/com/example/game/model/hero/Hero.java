@@ -5,29 +5,28 @@ import javafx.scene.image.ImageView;
 import java.util.ArrayList;
 
 public abstract class Hero {
-    private ArrayList<ImageView> imageViews;
-    private int speed;
+    private ImageView imageView;
+    private long speed;
     private int power;
-    private int attackStream;
-    private AttackType attackType;
     private int attackRadius;
+    private long attackStream;
+    private AttackType attackType;
     private int health;
 
-    public Hero(ArrayList<ImageView> imageViews,int speed, int power, AttackType attackType, int attackRadius, int health,int attackStream) {
-        this.imageViews =imageViews;
+    public Hero( long speed, int power, AttackType attackType, int attackRadius, int health, long attackStream) {
         this.speed = speed;
         this.power = power;
         this.attackType = attackType;
         this.attackRadius = attackRadius;
         this.health = health;
-        this.attackStream=attackStream;
+        this.attackStream = attackStream;
     }
 
-    public int getAttackStream() {
+    public long getAttackStream() {
         return this.attackStream;
     }
 
-    public int getSpeed() {
+    public long getSpeed() {
         return speed;
     }
 
@@ -49,53 +48,11 @@ public abstract class Hero {
 
     @Override
     public String toString() {
-        return "heroID= " + imageViews +
-                "\nspeed= " + speed +
-                "\npower= " + power +
-                "\nattackType= " + attackType +
-                "\nattackRadius= " + attackRadius +
-                "\nhealth= " + health;
-    }
-
-    public static class Barbarian extends Hero{
-        public Barbarian(ArrayList<ImageView> imageViews, int speed, int power, AttackType attackType, int attackRadius, int health, int attackStream) {
-            super(imageViews, speed, power, attackType, attackRadius, health, attackStream);
-        }
-
-        @Override
-        public int getAttackStream() {
-            return super.getAttackStream();
-        }
-
-        @Override
-        public int getSpeed() {
-            return super.getSpeed();
-        }
-
-        @Override
-        public int getPower() {
-            return super.getPower();
-        }
-
-        @Override
-        public AttackType getAttackType() {
-            return super.getAttackType();
-        }
-
-        @Override
-        public int getAttackRadius() {
-            return super.getAttackRadius();
-        }
-
-        @Override
-        public int getHealth() {
-            return super.getHealth();
-        }
-
-        @Override
-        public String toString() {
-            return super.toString();
-        }
-
+        return "speed = " + speed +
+                "\npower = " + power +
+                "\nattackRadius = " + attackRadius +
+                "\nattackStream = " + attackStream +
+                "\nattackType = " + attackType +
+                "\nhealth = " + health;
     }
 }

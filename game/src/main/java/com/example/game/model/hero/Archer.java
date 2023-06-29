@@ -4,18 +4,25 @@ import javafx.scene.image.ImageView;
 
 import java.util.ArrayList;
 
-public class Archer extends Hero{
-    public Archer(ArrayList<ImageView> imageViews, int speed, int power, AttackType attackType, int attackRadius, int health, int attackStream) {
-        super(imageViews, speed, power, attackType, attackRadius, health, attackStream);
+public class Archer extends Hero {
+    static final long speed = 10000;
+    static final int power = 50;
+    static final AttackType attackType =AttackType.ATTACK;
+    static final int attackRadius= 5;
+    static final int health = 1000;
+    static final long attackStream = 5000;
+
+    public Archer() {
+        super( speed, power, attackType, attackRadius, health, attackStream);
     }
 
     @Override
-    public int getAttackStream() {
+    public long getAttackStream() {
         return super.getAttackStream();
     }
 
     @Override
-    public int getSpeed() {
+    public long getSpeed() {
         return super.getSpeed();
     }
 

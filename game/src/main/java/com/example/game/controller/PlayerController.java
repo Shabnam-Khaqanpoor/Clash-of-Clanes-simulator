@@ -3,10 +3,10 @@ package com.example.game.controller;
 import com.example.game.model.Player;
 import com.example.game.model.map.*;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 
 import javax.swing.*;
 import java.sql.*;
+import java.util.Objects;
 import java.util.Random;
 
 public class PlayerController {
@@ -20,41 +20,24 @@ public class PlayerController {
         }
         //check from database to be unique the ID and check the password to be more than 6 characters
         else {
-            Player player = new Player(ID, pass, map, random.nextInt(10) + 1);
-            onlinePlayer = player;
-            saveToDatabase(player);
+            onlinePlayer= new Player(ID, pass, map, random.nextInt(10) + 1);
+            saveToDatabase(onlinePlayer);
             //saveed to database
         }
     }
 
     public boolean login(String ID, String pass) {
-        Boolean find=false;
+        boolean find=false;
         try {
             ResultSet rs = readDatabase();
             while (rs.next()) {
                 if (rs.getString("ID").equals(ID) && rs.getString("password").equals(pass)) {
                     find=true;
                     switch (rs.getString("map")) {
-                        case "cityMap" -> {
-                            onlinePlayer = new Player(ID, pass, new CityMap( new ImageView(new Image(new ImageIcon("-5823628951187209297_121[52].jpg").getImage().toString()))), rs.getInt("level"));
-                            onlinePlayer.setLost(rs.getInt("lost"));
-                            onlinePlayer.setWin(rs.getInt("win"));
-                        }
-                        case "greenMap" -> {
-                            onlinePlayer = new Player(ID, pass, new GreenMap( new ImageView(new Image(new ImageIcon("-5823628951187209297_121[51].jpg").getImage().toString()))), rs.getInt("level"));
-                            onlinePlayer.setLost(rs.getInt("lost"));
-                            onlinePlayer.setWin(rs.getInt("win"));
-                        }
-                        case "blueMap" -> {
-                            onlinePlayer = new Player(ID, pass, new BlueMap( new ImageView(new Image(new ImageIcon("-5823628951187209297_121[50].jpg").getImage().toString()))), rs.getInt("level"));
-                            onlinePlayer.setLost(rs.getInt("lost"));
-                            onlinePlayer.setWin(rs.getInt("win"));
-                        }
-                        case "iceMap" -> {
-                            onlinePlayer = new Player(ID, pass, new IceMap( new ImageView(new Image(new ImageIcon("-5823628951187209297_121[49].jpg").getImage().toString()))), rs.getInt("level"));
-                            onlinePlayer.setLost(rs.getInt("lost"));
-                            onlinePlayer.setWin(rs.getInt("win"));
-                        }
+                        case "cityMap" -> addOnlinePlayer (ID,pass,new CityMap(new Image(new ImageIcon("-5823628951187209301_121[52].jpg").getImage().toString())),rs.getInt("win"),rs.getInt("lost"),rs.getInt("level"));
+                        case "greenMap" -> addOnlinePlayer(ID,pass,new GreenMap(new Image(Objects.requireNonNull(getClass().getResource("-5823628951187209301_121[51].jpg")).toExternalForm())),rs.getInt("win"),rs.getInt("lost"),rs.getInt("level"));
+                        case "blueMap" -> addOnlinePlayer (ID,pass,new BlueMap(new Image(Objects.requireNonNull(getClass().getResource("-5823628951187209301_121[50].jpg")).toExternalForm())),rs.getInt("win"),rs.getInt("lost"),rs.getInt("level"));
+                        case "iceMap" -> addOnlinePlayer  (ID,pass,new IceMap(new Image(new ImageIcon("-5823628951187209301_121[49].jpg").getImage().toString())),rs.getInt("win"),rs.getInt("lost"),rs.getInt("level"));
                     }
                 }
             }
@@ -62,6 +45,12 @@ public class PlayerController {
             e.printStackTrace();
         }
         return find;
+    }
+
+    void addOnlinePlayer(String ID,String pass,Map map,int win,int lost,int level) throws SQLException {
+        onlinePlayer=new Player(ID, pass, map, level);
+        onlinePlayer.setLost(lost);
+        onlinePlayer.setWin(win);
     }
 
     public Connection connection() throws ClassNotFoundException, SQLException {

@@ -15,11 +15,6 @@ import java.util.Objects;
 public class SignupPage {
 
     @FXML
-    void onClose(MouseEvent event) {
-        System.exit(0);
-    }
-
-    @FXML
     void onLogin(MouseEvent event) throws IOException {
         Parent parent= FXMLLoader.load(Objects.requireNonNull(getClass().getResource("login.fxml")));
         Stage stage=(Stage) ((Node)event.getSource()).getScene().getWindow();

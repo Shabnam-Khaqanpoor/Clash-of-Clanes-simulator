@@ -1,27 +1,28 @@
 package com.example.game.model.map;
 
-import javafx.scene.image.ImageView;
+import com.example.game.model.map.building.Building;
+import javafx.scene.image.Image;
 
 import java.util.ArrayList;
 
 public abstract class Map {
-    private ImageView mapImage;
-    private ArrayList<Building> buildings = new ArrayList<>();
+    private final Image mapImage;
+    private final ArrayList<Building> buildings = new ArrayList<>();
     private int limitationOfSoldiers;
 
-    private String ID;
+    private final String ID;
 
     public String getID(){
         return this.ID;
     }
 
 
-    public Map(ImageView mapImage,String ID) {
+    public Map(Image mapImage,String ID) {
         this.mapImage = mapImage;
         this.ID=ID;
     }
 
-    public ImageView getMapImage() {
+    public Image getMapImage() {
         return this.mapImage;
     }
 
@@ -35,6 +36,6 @@ public abstract class Map {
 
     @Override
     public String toString() {
-        return "Limitation of soldiers= " + limitationOfSoldiers;
+        return "Limitation of soldiers= " + this.limitationOfSoldiers;
     }
 }

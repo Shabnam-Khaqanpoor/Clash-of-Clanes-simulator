@@ -5,17 +5,24 @@ import javafx.scene.image.ImageView;
 import java.util.ArrayList;
 
 public class Goblin extends Hero{
-    public Goblin(ArrayList<ImageView> imageViews, int speed, int power, AttackType attackType, int attackRadius, int health, int attackStream) {
-        super(imageViews, speed, power, attackType, attackRadius, health, attackStream);
+
+    static final long speed = 8000;
+    static final int power = 120;
+    static final AttackType attackType =AttackType.DEFENSIVE;
+    static final int attackRadius= 0;
+    static final int health =500;
+    static final long attackStream = 2000;
+    public Goblin() {
+        super(speed, power, attackType, attackRadius, health, attackStream);
     }
 
     @Override
-    public int getAttackStream() {
+    public long getAttackStream() {
         return super.getAttackStream();
     }
 
     @Override
-    public int getSpeed() {
+    public long getSpeed() {
         return super.getSpeed();
     }
 

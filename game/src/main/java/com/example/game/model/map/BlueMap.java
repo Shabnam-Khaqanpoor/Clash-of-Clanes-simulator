@@ -1,17 +1,18 @@
 package com.example.game.model.map;
 
+import com.example.game.model.map.building.Building;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+import javax.swing.*;
 import java.util.ArrayList;
 
 public class BlueMap extends Map{
 
-    private ImageView mapImage;
-
     public static final String ID="blueMap";
     private ArrayList<Building> buildings = new ArrayList<>();
     private int limitationOfSoldiers;
-    public BlueMap(ImageView mapImage) {
+    public BlueMap(Image mapImage) {
         super(mapImage,ID);
         setLimitationOfSoldiers(10);
 //        this.buildings.add();
@@ -24,7 +25,7 @@ public class BlueMap extends Map{
         this.limitationOfSoldiers = limitationOfSoldiers;
     }
     @Override
-    public ImageView getMapImage() {
+    public Image getMapImage() {
         return super.getMapImage();
     }
 

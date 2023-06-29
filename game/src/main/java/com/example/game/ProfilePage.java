@@ -29,7 +29,7 @@ public class ProfilePage {
     void onEnterd(MouseEvent event) {
         profile.setText(PlayerController.onlinePlayer.toString());
         mapInfo.setText(PlayerController.onlinePlayer.getMap().toString());
-        map.setImage(PlayerController.onlinePlayer.getMap().getMapImage().getImage());
+        map.setImage(PlayerController.onlinePlayer.getMap().getMapImage());
     }
 
     void newPage(String fxml,String title,MouseEvent event) throws IOException {
