@@ -7,8 +7,6 @@ import javax.swing.*;
 
 public class DefensiveBuilding extends Building{
 
-    static final ImageView buildingImage=new ImageView(new Image("Clash-of-clans-Mortar.png"));
-
     static final BuildingType buildingType=BuildingType.DEFENSIVE;
     static final int health=700;
     static final int power=50;
@@ -20,7 +18,7 @@ public class DefensiveBuilding extends Building{
     private double y;
 
     public DefensiveBuilding(double x,double y) {
-        super(buildingImage, buildingType, health,x,y);
+        super(buildingType, health,x,y);
         super.setPower(power);
         super.setAttackRadius(attackRadius);
         super.setAttackStream(attackStream);

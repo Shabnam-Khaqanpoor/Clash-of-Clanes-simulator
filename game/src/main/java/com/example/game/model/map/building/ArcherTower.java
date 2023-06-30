@@ -7,8 +7,6 @@ import javax.swing.*;
 
 public class ArcherTower extends Building{
 
-    static final ImageView buildingImage=new ImageView(new Image("Archer_Tower.png"));
-
     static final BuildingType buildingType=BuildingType.DEFENSIVE;
     static final int health=1000;
     static final int power=100;
@@ -20,7 +18,7 @@ public class ArcherTower extends Building{
 
 
     public ArcherTower(double x,double y) {
-        super(buildingImage, buildingType, health,x,y);
+        super(buildingType, health,x,y);
         super.setPower(power);
         super.setAttackRadius(attackRadius);
         super.setAttackStream(attackStream);

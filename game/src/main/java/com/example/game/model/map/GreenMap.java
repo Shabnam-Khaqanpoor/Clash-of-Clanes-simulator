@@ -14,18 +14,14 @@ public class GreenMap extends Map{
 
     public static final String ID="greenMap";
     private ArrayList<Building> buildings = new ArrayList<>();
-    private int limitationOfSoldiers;
+    private static final int limitationOfSoldiers=15;
     public GreenMap(Image mapImage) {
         super(mapImage,ID);
-        setLimitationOfSoldiers(15);
-        ArmyBuilding armyBuilding = new ArmyBuilding(200,130);
+        super.setLimitationOfSoldiers(limitationOfSoldiers);
+        ArmyBuilding armyBuilding = new ArmyBuilding(511.0,367.0);
         this.buildings.add(armyBuilding);
-        DefensiveBuilding defensiveBuilding = new DefensiveBuilding(200,100);
+        DefensiveBuilding defensiveBuilding = new DefensiveBuilding(501.0,281.0);
         this.buildings.add(defensiveBuilding);
-    }
-
-    public void setLimitationOfSoldiers(int limitationOfSoldiers) {
-        this.limitationOfSoldiers = limitationOfSoldiers;
     }
 
     @Override

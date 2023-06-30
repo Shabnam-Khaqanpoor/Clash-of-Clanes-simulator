@@ -3,8 +3,6 @@ package com.example.game.model.map.building;
 import javafx.scene.image.ImageView;
 
 public abstract class Building {
-
-    private ImageView buildingImage;
     private BuildingType buildingType;
     private int health;
     private int power;
@@ -14,10 +12,7 @@ public abstract class Building {
     private double x=0;
     private double y=0;
 
-    public Building(ImageView buildingImage, BuildingType buildingType, int health,double x,double y) {
-        this.buildingImage = buildingImage;
-        buildingImage.setX(x);
-        buildingImage.setY(y);
+    public Building(BuildingType buildingType, int health,double x,double y) {
         this.buildingType = buildingType;
         this.health = health;
     }
@@ -57,14 +52,6 @@ public abstract class Building {
 
     public void setAttackStream(long attackStream) {
         this.attackStream = attackStream;
-    }
-
-    public ImageView getBuildingImage() {
-        return this.buildingImage;
-    }
-
-    public void setBuildingImage(ImageView buildingImage) {
-        this.buildingImage = buildingImage;
     }
 
     public void setPower(int power) {

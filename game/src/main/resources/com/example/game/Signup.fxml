@@ -18,7 +18,7 @@
             <Image url="@../../../../../../../../game/src/main/resources/com/example/game/ClashOfClans-NextUpdate.jpg" />
          </image>
       </ImageView>
-      <Button layoutX="166.0" layoutY="99.0" mnemonicParsing="false" onMouseClicked="#onLogin" prefHeight="77.0" prefWidth="188.0" style="-fx-background-color: dark; -fx-border-color: black;" text="Login!" textAlignment="CENTER" textFill="#000000f0">
+      <Button layoutX="166.0" layoutY="99.0" mnemonicParsing="false" onMouseClicked="#onLogin" prefHeight="77.0" prefWidth="188.0" style="-fx-background-color: dark; -fx-border-color: black;" text="Start!" textAlignment="CENTER" textFill="#000000f0">
          <font>
             <Font name="Sylfaen" size="36.0" />
          </font>

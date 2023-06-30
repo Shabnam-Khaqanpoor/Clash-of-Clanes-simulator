@@ -1,13 +1,10 @@
 package com.example.game.model.map.building;
 
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import javax.swing.*;
 
 public class TownHall extends Building{
-    static final ImageView buildingImage=new ImageView(new Image("town_hall_level11_ingame_icon.png"));
-
     static final BuildingType buildingType=BuildingType.NORMAL;
     static final int health=900;
 
@@ -16,7 +13,7 @@ public class TownHall extends Building{
 
 
     public TownHall(double x,double y) {
-        super(buildingImage, buildingType, health,x,y);
+        super(buildingType, health,x,y);
     }
 
     public double getX() {

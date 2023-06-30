@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="835.0" prefWidth="1535.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.game.Start">
+   <children>
+      <ImageView fitHeight="99.0" fitWidth="81.0" layoutX="1440.0" layoutY="14.0" onMouseClicked="#onMenu" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@menu-icon-sign-symbol-design-free-png.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="map" fitHeight="844.0" fitWidth="1096.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@city.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="one" fitHeight="77.0" fitWidth="80.0" layoutX="466.0" layoutY="283.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@town_hall_level11_ingame_icon.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="two" fitHeight="86.0" fitWidth="53.0" layoutX="569.0" layoutY="286.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Archer_Tower.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="three" fitHeight="88.0" fitWidth="86.0" layoutX="508.0" layoutY="347.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Clash-of-clans-Mortar.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="172.0" fitWidth="178.0" layoutX="1281.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@5b4eee34c051e602a568ce17.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="199.0" fitWidth="237.0" layoutX="1244.0" layoutY="209.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@goblin.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="209.0" fitWidth="214.0" layoutX="1256.0" layoutY="404.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@12-2-clash-of-clans-giant-png.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="245.0" fitWidth="237.0" layoutX="1245.0" layoutY="608.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@27800-4-clash-of-clans-transparent-background.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

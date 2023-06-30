@@ -10,12 +10,12 @@
 
 <AnchorPane prefHeight="835.0" prefWidth="1535.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.game.LoginPage">
    <children>
-      <ImageView fitHeight="676.0" fitWidth="657.0" layoutX="14.0" layoutY="157.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="869.0" fitWidth="1541.0" layoutX="-6.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@27800-4-clash-of-clans-transparent-background.png" />
+            <Image url="@1396166%5B67%5D.png" />
          </image>
       </ImageView>
-      <TextField fx:id="ID" layoutX="1069.0" layoutY="157.0" prefHeight="54.0" prefWidth="282.0" promptText="Enter your ID...">
+      <TextField fx:id="ID" layoutX="638.0" layoutY="49.0" prefHeight="54.0" prefWidth="282.0" promptText="Enter your ID..." style="-fx-background-color: dark; -fx-border-color: black;">
          <font>
             <Font name="Sylfaen" size="22.0" />
          </font>
@@ -25,27 +25,27 @@
             <Image url="@img_79035.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="127.0" fitWidth="122.0" layoutX="866.0" layoutY="123.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="66.0" fitWidth="54.0" layoutX="564.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@id-icon-png-20.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="100.0" fitWidth="95.0" layoutX="884.0" layoutY="245.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="54.0" fitWidth="46.0" layoutX="565.0" layoutY="164.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@icon-password-3.jpg" />
          </image>
       </ImageView>
-      <Text layoutX="1069.0" layoutY="401.0" onMouseClicked="#onLogin" strokeType="OUTSIDE" strokeWidth="0.0" text="Login!">
+      <Text layoutX="991.0" layoutY="150.0" onMouseClicked="#onLogin" strokeType="OUTSIDE" strokeWidth="0.0" text="Login!">
          <font>
             <Font name="Sylfaen" size="36.0" />
          </font>
       </Text>
-      <Text layoutX="1217.0" layoutY="401.0" onMouseClicked="#onSignup" strokeType="OUTSIDE" strokeWidth="0.0" text="Signup!">
+      <Text layoutX="983.0" layoutY="203.0" onMouseClicked="#onSignup" strokeType="OUTSIDE" strokeWidth="0.0" text="Signup!">
          <font>
             <Font name="Sylfaen" size="36.0" />
          </font>
       </Text>
-      <PasswordField fx:id="password" layoutX="1069.0" layoutY="268.0" prefHeight="54.0" prefWidth="282.0" promptText="Enter your password...">
+      <PasswordField fx:id="password" layoutX="638.0" layoutY="160.0" prefHeight="54.0" prefWidth="282.0" promptText="Enter your password..." style="-fx-background-color: dark; -fx-border-color: black;">
          <font>
             <Font name="Sylfaen" size="24.0" />
          </font>
@@ -54,22 +54,22 @@
          <children>
             <ImageView fx:id="cityMap" fitHeight="141.0" fitWidth="173.0" layoutX="14.0" layoutY="29.0" onMouseClicked="#onCityMap" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@-5823628951187209297_121[52].jpg" />
+                  <Image url="@city.jpg" />
                </image>
             </ImageView>
             <ImageView fx:id="blueMap" fitHeight="135.0" fitWidth="173.0" layoutX="14.0" layoutY="182.0" onMouseClicked="#onBlueMap" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@-5823628951187209299_121[50].jpg" />
+                  <Image url="@blue.jpg" />
                </image>
             </ImageView>
-            <ImageView fx:id="greenMap" fitHeight="134.0" fitWidth="182.0" layoutX="207.0" layoutY="29.0" onMouseClicked="#onGreenMap" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="greenMap" fitHeight="129.0" fitWidth="166.0" layoutX="207.0" layoutY="29.0" onMouseClicked="#onGreenMap" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@-5823628951187209298_121[51].jpg" />
+                  <Image url="@green.jpg" />
                </image>
             </ImageView>
-            <ImageView fx:id="iceMap" fitHeight="130.0" fitWidth="173.0" layoutX="210.0" layoutY="174.0" onMouseClicked="#onIceMap" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="iceMap" fitHeight="134.0" fitWidth="166.0" layoutX="210.0" layoutY="174.0" onMouseClicked="#onIceMap" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@-5823628951187209301_121[49].jpg" />
+                  <Image url="@ice.jpg" />
                </image>
             </ImageView>
          </children>

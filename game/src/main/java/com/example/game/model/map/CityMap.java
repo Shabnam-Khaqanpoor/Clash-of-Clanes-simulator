@@ -7,27 +7,23 @@ import com.example.game.model.map.building.TownHall;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-import javax.swing.*;
 import java.util.ArrayList;
 
 public class CityMap extends Map{
     public static final String ID="cityMap";
     private ArrayList<Building> buildings = new ArrayList<>();
-    private int limitationOfSoldiers;
+    private static final int limitationOfSoldiers=20;
     public CityMap(Image mapImage) {
         super(mapImage,ID);
-        setLimitationOfSoldiers(20);
-        TownHall townHall=new TownHall(200,200);
+        super.setLimitationOfSoldiers(limitationOfSoldiers);
+        TownHall townHall=new TownHall(466.0,283.0);
         this.buildings.add(townHall);
-        ArcherTower archerTower = new ArcherTower(220,200);
+        ArcherTower archerTower = new ArcherTower(569.0,286.0);
         this.buildings.add(archerTower);
-        DefensiveBuilding defensiveBuilding = new DefensiveBuilding(210,250);
+        DefensiveBuilding defensiveBuilding = new DefensiveBuilding(508.0,347.0);
         this.buildings.add(defensiveBuilding);
     }
 
-    public void setLimitationOfSoldiers(int limitationOfSoldiers) {
-        this.limitationOfSoldiers = limitationOfSoldiers;
-    }
 
     @Override
     public Image getMapImage() {

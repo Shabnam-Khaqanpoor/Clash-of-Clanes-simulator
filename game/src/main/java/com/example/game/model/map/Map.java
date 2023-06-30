@@ -6,11 +6,11 @@ import javafx.scene.image.Image;
 import java.util.ArrayList;
 
 public abstract class Map {
-    private final Image mapImage;
-    private final ArrayList<Building> buildings = new ArrayList<>();
+    private Image mapImage;
+    private ArrayList<Building> buildings = new ArrayList<>();
     private int limitationOfSoldiers;
 
-    private final String ID;
+    private String ID;
 
     public String getID(){
         return this.ID;
@@ -24,6 +24,10 @@ public abstract class Map {
 
     public Image getMapImage() {
         return this.mapImage;
+    }
+
+    public void setLimitationOfSoldiers(int limitationOfSoldiers) {
+        this.limitationOfSoldiers = limitationOfSoldiers;
     }
 
     public ArrayList<Building> getBuildings() {

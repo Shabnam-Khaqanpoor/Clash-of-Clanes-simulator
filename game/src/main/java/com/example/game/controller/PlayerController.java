@@ -1,4 +1,5 @@
 package com.example.game.controller;
+
 import com.example.game.model.Player;
 import com.example.game.model.map.*;
 import javafx.scene.image.Image;
@@ -10,7 +11,7 @@ import java.util.ResourceBundle;
 
 import javafx.fxml.Initializable;
 
-public class PlayerController implements Initializable {
+public class PlayerController {
 
     public static Player onlinePlayer;
     Random random = new Random();
@@ -21,26 +22,26 @@ public class PlayerController implements Initializable {
         }
         //check from database to be unique the ID and check the password to be more than 6 characters
         else {
-            onlinePlayer= new Player(ID, pass, map, random.nextInt(10) + 1);
+            onlinePlayer = new Player(ID, pass, map, random.nextInt(10) + 1);
             saveToDatabase(onlinePlayer);
             //saveed to database
         }
     }
 
-    public boolean login(String ID, String pass){
-        boolean find=false;
+    public boolean login(String ID, String pass) {
+        boolean find = false;
         try {
             ResultSet rs = readDatabase();
             while (rs.next()) {
                 if (rs.getString("ID").equals(ID) && rs.getString("password").equals(pass)) {
-                    onlinePlayer=new Player(ID,pass,rs.getInt("level"),rs.getInt("win"),rs.getInt("lost"));
+                    onlinePlayer = new Player(ID, pass, rs.getInt("level"), rs.getInt("win"), rs.getInt("lost"));
 
-                    find=true;
+                    find = true;
                     switch (rs.getString("map")) {
-                        case "cityMap" -> onlinePlayer.setMap(new CityMap(new Image("-5823628951187209301_121[52].jpg")));
-                        case "greenMap" ->onlinePlayer.setMap(new GreenMap(new Image("-5823628951187209301_121[51].jpg")));
-                        case "blueMap" -> onlinePlayer.setMap(new BlueMap(new Image("-5823628951187209301_121[50].jpg")));
-                        case "iceMap" ->  onlinePlayer.setMap(new IceMap(new Image("-5823628951187209301_121[49].jpg")));
+                        case "cityMap" -> onlinePlayer.setMap(new CityMap(new Image("city.jpg")));
+                        case "greenMap" -> onlinePlayer.setMap(new GreenMap(new Image("green.jpg")));
+                        case "blueMap" -> onlinePlayer.setMap(new BlueMap(new Image("blue.jpg")));
+                        case "iceMap" -> onlinePlayer.setMap(new IceMap(new Image("ice.jpg")));
                     }
                 }
             }
@@ -85,10 +86,5 @@ public class PlayerController implements Initializable {
         connection().close();
 
         //saved to database
-    }
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
     }
 }

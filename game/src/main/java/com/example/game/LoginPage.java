@@ -74,7 +74,7 @@ public class LoginPage {
     }
 
     @FXML
-    void onSignup(MouseEvent event) {
+    void onSignup() {
         mapsID.setVisible(true);
     }
 
@@ -84,7 +84,7 @@ public class LoginPage {
     @FXML
     void onBlueMap(MouseEvent event) {
         try {
-            BlueMap blueMap1=new BlueMap(new Image(Objects.requireNonNull(getClass().getResource("-5823628951187209301_121[50].jpg")).toExternalForm()));
+            BlueMap blueMap1=new BlueMap(new Image(Objects.requireNonNull(getClass().getResource("blue.jpg")).toExternalForm()));
             playerController.signUp(ID.getText(), password.getText(), blueMap1);
             newPage("menu", "Menu page", event);
         } catch (Exception e) {
@@ -96,7 +96,7 @@ public class LoginPage {
     @FXML
     void onCityMap(MouseEvent event) {
         try {
-            CityMap cityMap1=new CityMap(new Image(Objects.requireNonNull(getClass().getResource("-5823628951187209301_121[52].jpg")).toExternalForm()));
+            CityMap cityMap1=new CityMap(new Image(Objects.requireNonNull(getClass().getResource("city.jpg")).toExternalForm()));
             playerController.signUp(ID.getText(), password.getText(),cityMap1);
             newPage("menu", "Menu page", event);
         } catch (Exception e) {
@@ -108,7 +108,7 @@ public class LoginPage {
     @FXML
     void onGreenMap(MouseEvent event) {
         try {
-            GreenMap greenMap1=new GreenMap(new Image(Objects.requireNonNull(getClass().getResource("-5823628951187209301_121[51].jpg")).toExternalForm()));
+            GreenMap greenMap1=new GreenMap(new Image(Objects.requireNonNull(getClass().getResource("green.jpg")).toExternalForm()));
             playerController.signUp(ID.getText(), password.getText(), greenMap1);
             newPage("menu", "Menu page", event);
         } catch (Exception e) {
@@ -120,7 +120,7 @@ public class LoginPage {
     @FXML
     void onIceMap(MouseEvent event) {
         try {
-            IceMap iceMap1=new IceMap(new Image(Objects.requireNonNull(getClass().getResource("-5823628951187209301_121[49].jpg")).toExternalForm()));
+            IceMap iceMap1=new IceMap(new Image(Objects.requireNonNull(getClass().getResource("ice.jpg")).toExternalForm()));
             playerController.signUp(ID.getText(), password.getText(), iceMap1);
             newPage("menu", "Menu page", event);
         } catch (Exception e) {
