@@ -18,11 +18,11 @@ public class BlueMap extends Map{
     public BlueMap(Image mapImage) {
         super(mapImage,ID);
         super.setLimitationOfSoldiers(limitationOfSoldiers);
-        ArmyBuilding armyBuilding = new ArmyBuilding(615.0,368.0);
+        ArmyBuilding armyBuilding = new ArmyBuilding(602.0,372.0,72.0,86.0);
         this.buildings.add(armyBuilding);
-        ArcherTower archerTower = new ArcherTower(543.0,293.0);
+        ArcherTower archerTower = new ArcherTower(530.0,297.0,68.0,77.0);
         this.buildings.add(archerTower);
-        DefensiveBuilding defensiveBuilding = new DefensiveBuilding(615.0,276.0);
+        DefensiveBuilding defensiveBuilding = new DefensiveBuilding(602.0,280.0,88.0,86.0);
         this.buildings.add(defensiveBuilding);
     }
 

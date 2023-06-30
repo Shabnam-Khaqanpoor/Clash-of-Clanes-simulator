@@ -10,10 +10,13 @@ public class TownHall extends Building{
 
     private double x;
     private double y;
+    private double fitHeight;
+
+    private double fitWidth;
 
 
-    public TownHall(double x,double y) {
-        super(buildingType, health,x,y);
+    public TownHall(double x,double y,double fitHeight,double fitWidth) {
+        super(buildingType, health,x,y,fitHeight,fitWidth);
     }
 
     public double getX() {

@@ -18,9 +18,9 @@ public class GreenMap extends Map{
     public GreenMap(Image mapImage) {
         super(mapImage,ID);
         super.setLimitationOfSoldiers(limitationOfSoldiers);
-        ArmyBuilding armyBuilding = new ArmyBuilding(511.0,367.0);
+        ArmyBuilding armyBuilding = new ArmyBuilding(511.0,373.0,72.0,86.0);
         this.buildings.add(armyBuilding);
-        DefensiveBuilding defensiveBuilding = new DefensiveBuilding(501.0,281.0);
+        DefensiveBuilding defensiveBuilding = new DefensiveBuilding(501.0,287.0,88.0,86.0);
         this.buildings.add(defensiveBuilding);
     }
 

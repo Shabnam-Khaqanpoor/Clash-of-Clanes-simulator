@@ -15,10 +15,13 @@ public class ArmyBuilding extends Building{
     static final long attackStream=8000;
     private double x;
     private double y;
+    private double fitHeight;
+
+    private double fitWidth;
 
 
-    public ArmyBuilding(double x,double y) {
-        super(buildingType, health,x,y);
+    public ArmyBuilding(double x,double y,double fitHeight,double fitWidth) {
+        super(buildingType, health,x,y,fitHeight,fitWidth);
         super.setPower(power);
         super.setAttackRadius(attackRadius);
         super.setAttackStream(attackStream);

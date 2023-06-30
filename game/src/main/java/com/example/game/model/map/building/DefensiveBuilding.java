@@ -16,9 +16,12 @@ public class DefensiveBuilding extends Building{
 
     private double x;
     private double y;
+    private double fitHeight;
 
-    public DefensiveBuilding(double x,double y) {
-        super(buildingType, health,x,y);
+    private double fitWidth;
+
+    public DefensiveBuilding(double x,double y,double fitHeight,double fitWidth) {
+        super(buildingType, health,x,y,fitHeight,fitWidth);
         super.setPower(power);
         super.setAttackRadius(attackRadius);
         super.setAttackStream(attackStream);

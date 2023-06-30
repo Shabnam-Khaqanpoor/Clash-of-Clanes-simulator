@@ -56,13 +56,13 @@ public class MapsPage implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        ArcherTower archerTower1=new ArcherTower(0,0);
+        ArcherTower archerTower1=new ArcherTower(0,0,0,0);
         archerTower.setText(archerTower1.toString());
-        TownHall townHall=new TownHall(0,0);
+        TownHall townHall=new TownHall(0,0,0,0);
         townhall.setText(townHall.toString());
-        ArmyBuilding armyBuilding1=new ArmyBuilding(0,0);
+        ArmyBuilding armyBuilding1=new ArmyBuilding(0,0,0,0);
         armyBuilding.setText(armyBuilding1.toString());
-        DefensiveBuilding defensiveBuilding1=new DefensiveBuilding(0,0);
+        DefensiveBuilding defensiveBuilding1=new DefensiveBuilding(0,0,0,0);
         defensiveBuilding.setText(defensiveBuilding1.toString());
     }
 }

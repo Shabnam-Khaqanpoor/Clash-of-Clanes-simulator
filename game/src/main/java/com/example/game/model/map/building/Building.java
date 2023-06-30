@@ -9,12 +9,20 @@ public abstract class Building {
     private int attackRadius;
     private long attackStream;
 
-    private double x=0;
-    private double y=0;
+    private double x;
+    private double y;
 
-    public Building(BuildingType buildingType, int health,double x,double y) {
+    private double fitHeight;
+
+    private double fitWidth;
+
+    public Building(BuildingType buildingType, int health,double x,double y,double fitHeight,double fitWidth) {
         this.buildingType = buildingType;
         this.health = health;
+        this.fitHeight=fitHeight;
+        this.fitWidth=fitWidth;
+        this.x=x;
+        this.y=y;
     }
 
     public double getX() {

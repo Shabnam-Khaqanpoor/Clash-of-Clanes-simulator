@@ -15,10 +15,13 @@ public class ArcherTower extends Building{
 
     private double x;
     private double y;
+    private double fitHeight;
+
+    private double fitWidth;
 
 
-    public ArcherTower(double x,double y) {
-        super(buildingType, health,x,y);
+    public ArcherTower(double x,double y,double fitHeight,double fitWidth) {
+        super(buildingType, health,x,y,fitHeight,fitWidth);
         super.setPower(power);
         super.setAttackRadius(attackRadius);
         super.setAttackStream(attackStream);

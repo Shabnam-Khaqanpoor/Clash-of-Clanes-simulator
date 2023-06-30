@@ -1,14 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.game.GreenMapPage"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="835.0" prefWidth="1535.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.game.GreenMapPage">
+   <children>
+      <ImageView fitHeight="855.0" fitWidth="1087.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@green.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="88.0" fitWidth="86.0" layoutX="501.0" layoutY="287.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Clash-of-clans-Mortar.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="72.0" fitWidth="86.0" layoutX="511.0" layoutY="373.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@imgbin_clash-of-clans-youtube-video-gaming-clan-clan-war-building-png.png" />
+         </image>
+      </ImageView>
+   </children>
 </AnchorPane>

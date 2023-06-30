@@ -18,11 +18,11 @@ public class IceMap extends Map {
     public IceMap(Image mapImage) {
         super(mapImage, ID);
         super.setLimitationOfSoldiers(limitationOfSoldiers);
-        ArmyBuilding armyBuilding = new ArmyBuilding(578.0, 309.0);
+        ArmyBuilding armyBuilding = new ArmyBuilding(556.0, 307.0,72.0,86.0);
         this.buildings.add(armyBuilding);
-        TownHall townHall = new TownHall(479.0, 306.0);
+        TownHall townHall = new TownHall(457.0, 304.0,77.0,80.0);
         this.buildings.add(townHall);
-        TownHall townHall1 = new TownHall(533.0, 363.0);
+        TownHall townHall1 = new TownHall(511.0, 361.0,77.0,80.0);
         this.buildings.add(townHall1);
     }
 

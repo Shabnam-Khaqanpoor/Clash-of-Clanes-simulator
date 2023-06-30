@@ -1,14 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.game.CityMapPage"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="835.0" prefWidth="1535.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.game.CityMapPage">
+   <children>
+      <ImageView fitHeight="835.0" fitWidth="1112.0" layoutX="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@city.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="77.0" fitWidth="80.0" layoutX="474.0" layoutY="278.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@town_hall_level11_ingame_icon.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="86.0" fitWidth="53.0" layoutX="577.0" layoutY="281.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Archer_Tower.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="88.0" fitWidth="86.0" layoutX="516.0" layoutY="342.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Clash-of-clans-Mortar.png" />
+         </image>
+      </ImageView>
+   </children>
 </AnchorPane>

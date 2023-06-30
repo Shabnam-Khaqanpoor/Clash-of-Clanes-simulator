@@ -6,31 +6,20 @@
 
 <AnchorPane prefHeight="835.0" prefWidth="1535.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.game.Start">
    <children>
-      <ImageView fitHeight="99.0" fitWidth="81.0" layoutX="1440.0" layoutY="14.0" onMouseClicked="#onMenu" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="971.0" fitWidth="1553.0" layoutY="-108.0" opacity="0.6" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@menu-icon-sign-symbol-design-free-png.png" />
+            <Image url="@1396197%5B60%5D.jpg" />
          </image>
       </ImageView>
-      <ImageView fx:id="map" fitHeight="844.0" fitWidth="1096.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="99.0" fitWidth="81.0" layoutX="1440.0" layoutY="14.0" onMouseClicked="#onPause" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@city.jpg" />
+            <Image url="@R (1).png" />
          </image>
       </ImageView>
-      <ImageView fx:id="one" fitHeight="77.0" fitWidth="80.0" layoutX="466.0" layoutY="283.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@town_hall_level11_ingame_icon.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="two" fitHeight="86.0" fitWidth="53.0" layoutX="569.0" layoutY="286.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Archer_Tower.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="three" fitHeight="88.0" fitWidth="86.0" layoutX="508.0" layoutY="347.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Clash-of-clans-Mortar.png" />
-         </image>
-      </ImageView>
+      <ImageView fx:id="map" fitHeight="863.0" fitWidth="1123.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="one" fitHeight="77.0" fitWidth="80.0" layoutX="466.0" layoutY="283.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="two" fitHeight="86.0" fitWidth="53.0" layoutX="569.0" layoutY="286.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="three" fitHeight="88.0" fitWidth="86.0" layoutX="508.0" layoutY="347.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fitHeight="172.0" fitWidth="178.0" layoutX="1281.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@5b4eee34c051e602a568ce17.png" />

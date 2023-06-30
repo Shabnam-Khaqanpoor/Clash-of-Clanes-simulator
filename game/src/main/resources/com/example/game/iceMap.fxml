@@ -1,14 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.game.IceMapPage"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="835.0" prefWidth="1535.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.game.IceMapPage">
+   <children>
+      <ImageView fitHeight="835.0" fitWidth="1157.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@ice.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="77.0" fitWidth="80.0" layoutX="457.0" layoutY="304.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@town_hall_level11_ingame_icon.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="72.0" fitWidth="86.0" layoutX="556.0" layoutY="307.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@imgbin_clash-of-clans-youtube-video-gaming-clan-clan-war-building-png.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="77.0" fitWidth="80.0" layoutX="511.0" layoutY="361.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@town_hall_level11_ingame_icon.png" />
+         </image>
+      </ImageView>
+   </children>
 </AnchorPane>

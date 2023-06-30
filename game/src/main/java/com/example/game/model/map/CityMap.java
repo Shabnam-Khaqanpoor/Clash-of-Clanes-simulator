@@ -16,11 +16,11 @@ public class CityMap extends Map{
     public CityMap(Image mapImage) {
         super(mapImage,ID);
         super.setLimitationOfSoldiers(limitationOfSoldiers);
-        TownHall townHall=new TownHall(466.0,283.0);
+        TownHall townHall=new TownHall(474.0,278.0,77.0,80.0);
         this.buildings.add(townHall);
-        ArcherTower archerTower = new ArcherTower(569.0,286.0);
+        ArcherTower archerTower = new ArcherTower(577.0,281.0,86.0,53.0);
         this.buildings.add(archerTower);
-        DefensiveBuilding defensiveBuilding = new DefensiveBuilding(508.0,347.0);
+        DefensiveBuilding defensiveBuilding = new DefensiveBuilding(516.0,342.0,88.0,86.0);
         this.buildings.add(defensiveBuilding);
     }
 
