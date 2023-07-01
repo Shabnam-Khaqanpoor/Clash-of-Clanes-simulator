@@ -10,7 +10,7 @@
    <children>
       <ImageView fitHeight="1052.0" fitWidth="1535.0" layoutY="-80.0" opacity="0.54" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@1396183%5B61%5D.jpg" />
+            <Image url="@1396183[61].jpg" />
          </image>
       </ImageView>
       <ImageView fx:id="map" fitHeight="665.0" fitWidth="1146.0" layoutX="277.0" layoutY="72.0" onMouseClicked="#onMap" pickOnBounds="true" preserveRatio="true" />

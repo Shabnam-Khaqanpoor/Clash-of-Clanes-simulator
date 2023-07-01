@@ -1,25 +1,47 @@
 package com.example.game;
 
 import com.example.game.model.Player;
+import com.example.game.model.hero.Hero;
 import com.example.game.model.map.BlueMap;
 import com.example.game.model.map.CityMap;
 import com.example.game.model.map.GreenMap;
 import com.example.game.model.map.IceMap;
-import com.example.game.model.map.building.ArcherTower;
-import com.example.game.model.map.building.ArmyBuilding;
-import com.example.game.model.map.building.DefensiveBuilding;
-import com.example.game.model.map.building.TownHall;
+import com.example.game.model.map.building.Building;
+import com.example.game.model.map.building.BuildingType;
+import javafx.animation.TranslateTransition;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
+import javafx.util.Duration;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class Start implements Initializable {
+
+public class Start extends Pane implements Initializable {
     public static Player account;
+
+
+    @FXML
+    private ImageView archer;
+
+
+    @FXML
+    private ImageView fire;
+
+    @FXML
+    private ImageView barbarian;
+
+    @FXML
+    private ImageView giant;
+
+    @FXML
+    private ImageView goblin;
 
     @FXML
     private ImageView map;
@@ -34,8 +56,54 @@ public class Start implements Initializable {
     private ImageView two;
 
     @FXML
-    void onPause(MouseEvent event) {
+    private AnchorPane anchorPane;
 
+    Building building;
+
+    void addHero(ImageView hero){
+        ImageView imageView=new ImageView();
+        imageView.setImage(hero.getImage());
+        imageView.setFitHeight(100);
+        imageView.setFitWidth(100);
+        imageView.setLayoutX(hero.getLayoutX()-2);
+        imageView.setLayoutY(hero.getLayoutY()-2);
+
+        anchorPane.getChildren().add(imageView);
+
+        DraggableMaker.makeDraggable(imageView);
+    }
+
+
+    @FXML
+    void onArcher(ActionEvent event) {
+        addHero(archer);
+    }
+
+    @FXML
+    void onBarbarian(ActionEvent event) {
+        addHero(barbarian);
+    }
+
+    @FXML
+    void onGiant(ActionEvent event) {
+        addHero(giant);
+    }
+
+    @FXML
+    void onGoblin(ActionEvent event) {
+        addHero(goblin);
+    }
+
+    void building() {
+        for (Building building : account.getMap().getBuildings()) {
+            if (building.getBuildingType() == BuildingType.DEFENSIVE) {
+                this.building=building;
+                break;
+            }
+            else {
+                this.building=building;
+            }
+        }
     }
 
 
@@ -126,5 +194,6 @@ public class Start implements Initializable {
                 three.setImage(new ImageView(new Image("town_hall_level11_ingame_icon.png")).getImage());
             }
         }
+
     }
 }
