@@ -1,5 +1,7 @@
 package com.example.game;
 
+import com.example.game.controller.AttackThread;
+import com.example.game.controller.PlayerController;
 import com.example.game.controller.heroThreads.ArcherThread;
 import com.example.game.controller.heroThreads.BarbarianThread;
 import com.example.game.controller.heroThreads.GiantThread;
@@ -17,10 +19,15 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
 
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -37,17 +44,25 @@ public class Start extends Pane implements Initializable {
     public static boolean win = false;
 
     @FXML
-    private ImageView archer;
+    private AnchorPane anchorPane;
 
+    @FXML
+    private ImageView archer;
 
     @FXML
     private ImageView barbarian;
+
+    @FXML
+    private ImageView fire;
 
     @FXML
     private ImageView giant;
 
     @FXML
     private ImageView goblin;
+
+    @FXML
+    private static Text loser;
 
     @FXML
     private ImageView map;
@@ -62,10 +77,72 @@ public class Start extends Pane implements Initializable {
     private ImageView two;
 
     @FXML
-    private ImageView fire;
+    private ImageView result;
 
     @FXML
-    private AnchorPane anchorPane;
+    private Text winner;
+
+    public static Player enemy;
+
+
+    public void finish() {
+
+        if (enemy == null) {
+            try {
+                enemy = Start.account;
+                saveWinToDatabase(PlayerController.onlinePlayer, enemy);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+            text(PlayerController.onlinePlayer, enemy);
+
+        } else {
+            try {
+                saveWinToDatabase(enemy, PlayerController.onlinePlayer);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+
+            text(enemy, PlayerController.onlinePlayer);
+        }
+
+
+        result.setVisible(true);
+        winner.setVisible(true);
+        loser.setVisible(true);
+
+    }
+
+    void text(Player winnerPlayer, Player loserPlayer) {
+        winner.setText("Winner : " + winnerPlayer.toString());
+        loser.setText("Loser : " + loserPlayer.toString());
+    }
+
+    public void saveWinToDatabase(Player winner, Player loser) throws Exception {
+
+        winner.setWin(winner.getWin() + 1);
+        loser.setLost(loser.getLost() + 1);
+
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost/clash-of-clans", "root", "4013623007");
+        //connected to the database
+        String sql = "UPDATE `player` SET `win`='" + winner.getWin() + "' WHERE `ID`='" + winner.getID() + "';";
+        Statement s = con.prepareStatement(sql);
+        s.execute(sql);
+
+        String sql2 = "UPDATE `player` SET `lost`='" + loser.getLost() + "' WHERE `ID`='" + loser.getID() + "';";
+        Statement s2 = con.prepareStatement(sql2);
+        s2.execute(sql2);
+        con.close();
+
+        //saved to database
+    }
+
+
+    @FXML
+    void onClose(MouseEvent event) {
+        System.exit(0);
+    }
 
 
     @FXML
@@ -133,22 +210,33 @@ public class Start extends Pane implements Initializable {
             fire1.setVisible(false);
             if (heroClass instanceof Archer) {
                 ArcherThread archerThread = new ArcherThread(anchorPane, (Archer) heroClass, newHero, buildingsImage, fire1, event);
-                Thread thread=new Thread(archerThread);
+                Thread thread = new Thread(archerThread);
                 thread.start();
+
             } else if (heroClass instanceof Barbarin) {
                 fire1.setVisible(false);
-                BarbarianThread barbarianThread=new BarbarianThread(anchorPane, (Barbarin) heroClass, newHero, buildingsImage, fire1, event);
-                Thread thread=new Thread(barbarianThread);
+                BarbarianThread barbarianThread = new BarbarianThread(anchorPane, (Barbarin) heroClass, newHero, buildingsImage, fire1, event);
+                Thread thread = new Thread(barbarianThread);
                 thread.start();
             } else if (heroClass instanceof Giant) {
-                GiantThread giantThread=new GiantThread(anchorPane, (Giant) heroClass, newHero, buildingsImage, fire1, event);
-                Thread thread=new Thread(giantThread);
+                GiantThread giantThread = new GiantThread(anchorPane, (Giant) heroClass, newHero, buildingsImage, fire1, event);
+                Thread thread = new Thread(giantThread);
                 thread.start();
             } else if (heroClass instanceof Goblin) {
                 fire1.setVisible(false);
-                GoblinThread goblinThread=new GoblinThread(anchorPane, (Goblin) heroClass, newHero, buildingsImage, fire1, event);
-                Thread thread=new Thread(goblinThread);
+                GoblinThread goblinThread = new GoblinThread(anchorPane, (Goblin) heroClass, newHero, buildingsImage, fire1, event);
+                Thread thread = new Thread(goblinThread);
                 thread.start();
+            }
+
+            AttackThread attackThread = new AttackThread();
+            Thread threadA = new Thread(attackThread);
+            threadA.start();
+            try {
+                threadA.join();
+                finish();
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
             }
 
 

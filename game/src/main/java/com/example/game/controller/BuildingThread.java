@@ -1,7 +1,6 @@
 package com.example.game.controller;
 
 import com.example.game.HelloApplication;
-import com.example.game.ResultPage;
 import com.example.game.Start;
 import com.example.game.model.hero.AttackType;
 import com.example.game.model.map.building.Building;
@@ -67,16 +66,6 @@ public class BuildingThread implements Runnable {
             fire1.setVisible(false);
             Start.heroes.remove(Start.heroes.get(counter));
             findHero();
-        }
-        if (Start.heroes.size() == 0) {
-            Start.win = true;
-            ResultPage.enemy = Start.account;
-            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("result.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 1535, 835);
-            Stage stage=new Stage();
-            stage.setTitle("result!");
-            stage.setScene(scene);
-            stage.show();
         }
 
         fire1.setVisible(false);

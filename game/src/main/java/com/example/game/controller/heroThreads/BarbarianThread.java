@@ -23,7 +23,6 @@ import static java.lang.Thread.sleep;
 
 public class BarbarianThread implements Runnable {
 
-    boolean finished =true;
 
     ActionEvent event;
 
@@ -105,10 +104,6 @@ public class BarbarianThread implements Runnable {
             Start.account.getMap().getBuildings().remove(this.building);
             this.buildingImage.setVisible(false);
 
-            if (Start.account.getMap().getBuildings().size()==0) {
-                finished = true;
-                Start.win = true;
-            }
         }
     }
 
@@ -160,19 +155,6 @@ public class BarbarianThread implements Runnable {
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }}
-
-
-        Parent parent= null;
-        try {
-            parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("result.fxml")));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        Stage stage=(Stage) ((Node)this.event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(parent);
-        stage.setTitle("Result!");
-        stage.setScene(scene);
-        stage.show();
 
 
     }

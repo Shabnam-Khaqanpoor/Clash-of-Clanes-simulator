@@ -2,12 +2,14 @@ package com.example.game.controller.heroThreads;
 
 import com.example.game.HelloApplication;
 import com.example.game.Start;
+import com.example.game.controller.AttackThread;
 import com.example.game.model.hero.Archer;
 import com.example.game.model.hero.Goblin;
 import com.example.game.model.map.building.Building;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -18,14 +20,15 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Objects;
+import java.util.ResourceBundle;
 
 import static java.lang.Thread.sleep;
 
 public class ArcherThread implements Runnable {
 
-    boolean finished = false;
 
     ActionEvent event;
 
@@ -120,10 +123,6 @@ public class ArcherThread implements Runnable {
             Start.account.getMap().getBuildings().remove(this.building);
             this.buildingImage.setVisible(false);
 
-            if (Start.account.getMap().getBuildings().size()==0) {
-                finished = true;
-                Start.win = true;
-            }
         }
     }
 
@@ -192,21 +191,8 @@ public class ArcherThread implements Runnable {
                 Thread.sleep(5000);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
-            }}
-
-
-        Parent parent= null;
-        try {
-            parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("result.fxml")));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+            }
         }
-        Stage stage=(Stage) ((Node)this.event.getSource()).getScene().getWindow();
-            Scene scene = new Scene(parent);
-            stage.setTitle("Result!");
-            stage.setScene(scene);
-            stage.show();
-
 
     }
 }
