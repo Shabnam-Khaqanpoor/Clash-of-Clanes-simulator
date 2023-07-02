@@ -22,7 +22,7 @@ public class PlayerController {
         }
         //check from database to be unique the ID and check the password to be more than 6 characters
         else {
-            onlinePlayer = new Player(ID, pass, map, random.nextInt(10) + 1);
+            onlinePlayer = new Player(ID, pass, map, random.nextInt(10) + 2);
             saveToDatabase(onlinePlayer);
             //saveed to database
         }

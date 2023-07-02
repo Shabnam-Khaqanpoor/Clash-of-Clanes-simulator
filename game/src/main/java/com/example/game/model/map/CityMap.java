@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class CityMap extends Map{
     public static final String ID="cityMap";
     private ArrayList<Building> buildings = new ArrayList<>();
-    private static final int limitationOfSoldiers=20;
+    private static final int limitationOfSoldiers=15;
     public CityMap(Image mapImage) {
         super(mapImage,ID);
         super.setLimitationOfSoldiers(limitationOfSoldiers);

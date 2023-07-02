@@ -12,8 +12,8 @@ import java.util.ArrayList;
 public class BlueMap extends Map{
 
     public static final String ID="blueMap";
-    private ArrayList<Building> buildings = new ArrayList<>();
-    private static final int limitationOfSoldiers=10;
+    private final ArrayList<Building> buildings = new ArrayList<>();
+    private static final int limitationOfSoldiers=20;
 
     public BlueMap(Image mapImage) {
         super(mapImage,ID);

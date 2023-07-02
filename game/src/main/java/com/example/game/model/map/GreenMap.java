@@ -14,7 +14,7 @@ public class GreenMap extends Map{
 
     public static final String ID="greenMap";
     private ArrayList<Building> buildings = new ArrayList<>();
-    private static final int limitationOfSoldiers=15;
+    private static final int limitationOfSoldiers=10;
     public GreenMap(Image mapImage) {
         super(mapImage,ID);
         super.setLimitationOfSoldiers(limitationOfSoldiers);

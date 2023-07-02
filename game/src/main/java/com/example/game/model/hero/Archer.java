@@ -1,14 +1,11 @@
 package com.example.game.model.hero;
 
-import javafx.scene.image.ImageView;
-
-import java.util.ArrayList;
 
 public class Archer extends Hero {
     static final long speed = 10000;
     static final int power = 50;
     static final AttackType attackType =AttackType.ATTACK;
-    static final int attackRadius= 5;
+    static final int attackRadius= 150;
     static final int health = 1000;
     static final long attackStream = 5000;
 
@@ -44,6 +41,11 @@ public class Archer extends Hero {
     @Override
     public int getHealth() {
         return super.getHealth();
+    }
+
+    @Override
+    public void setHealth(int health) {
+        super.setHealth(health);
     }
 
     @Override

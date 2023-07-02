@@ -9,7 +9,7 @@ public class Giant extends Hero{
     static final long speed = 7000;
     static final int power = 70;
     static final AttackType attackType =AttackType.ATTACK;
-    static final int attackRadius= 3;
+    static final int attackRadius= 100;
     static final int health = 600;
     static final long attackStream = 3000;
     public Giant() {
@@ -19,6 +19,11 @@ public class Giant extends Hero{
     @Override
     public long getAttackStream() {
         return super.getAttackStream();
+    }
+
+    @Override
+    public void setHealth(int health) {
+        super.setHealth(health);
     }
 
     @Override

@@ -1,38 +1,44 @@
 package com.example.game;
 
+import com.example.game.controller.heroThreads.ArcherThread;
+import com.example.game.controller.heroThreads.BarbarianThread;
+import com.example.game.controller.heroThreads.GiantThread;
+import com.example.game.controller.heroThreads.GoblinThread;
 import com.example.game.model.Player;
-import com.example.game.model.hero.Hero;
+import com.example.game.model.hero.*;
 import com.example.game.model.map.BlueMap;
 import com.example.game.model.map.CityMap;
 import com.example.game.model.map.GreenMap;
 import com.example.game.model.map.IceMap;
-import com.example.game.model.map.building.Building;
-import com.example.game.model.map.building.BuildingType;
-import javafx.animation.TranslateTransition;
+import com.example.game.model.map.building.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import javafx.util.Duration;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 
 public class Start extends Pane implements Initializable {
+
+    public ArrayList<ImageView> buildingsImage = new ArrayList<>();
     public static Player account;
 
+    public static ArrayList<ImageView> heroImages = new ArrayList<>();
+
+    public static ArrayList<Hero> heroes = new ArrayList<>();
+
+    public static boolean win = false;
 
     @FXML
     private ImageView archer;
 
-
-    @FXML
-    private ImageView fire;
 
     @FXML
     private ImageView barbarian;
@@ -56,59 +62,108 @@ public class Start extends Pane implements Initializable {
     private ImageView two;
 
     @FXML
+    private ImageView fire;
+
+    @FXML
     private AnchorPane anchorPane;
-
-    Building building;
-
-    void addHero(ImageView hero){
-        ImageView imageView=new ImageView();
-        imageView.setImage(hero.getImage());
-        imageView.setFitHeight(100);
-        imageView.setFitWidth(100);
-        imageView.setLayoutX(hero.getLayoutX()-2);
-        imageView.setLayoutY(hero.getLayoutY()-2);
-
-        anchorPane.getChildren().add(imageView);
-
-        DraggableMaker.makeDraggable(imageView);
-    }
 
 
     @FXML
     void onArcher(ActionEvent event) {
-        addHero(archer);
+        Archer archerClass = new Archer();
+        addHero(archerClass, archer, event);
+
     }
+
 
     @FXML
     void onBarbarian(ActionEvent event) {
-        addHero(barbarian);
+
+        Barbarin barbarinClass = new Barbarin();
+        addHero(barbarinClass, barbarian, event);
+
+
     }
 
+    //
     @FXML
     void onGiant(ActionEvent event) {
-        addHero(giant);
+        Giant giantClass = new Giant();
+        addHero(giantClass, giant, event);
+
+
     }
 
     @FXML
     void onGoblin(ActionEvent event) {
-        addHero(goblin);
+        Goblin goblinClass = new Goblin();
+        addHero(goblinClass, goblin, event);
+
+
     }
 
-    void building() {
-        for (Building building : account.getMap().getBuildings()) {
-            if (building.getBuildingType() == BuildingType.DEFENSIVE) {
-                this.building=building;
-                break;
+    void addHero(Hero heroClass, ImageView hero, ActionEvent event) {
+        ImageView newHero = new ImageView();
+        ImageView fire1 = new ImageView();
+        fire1.setImage(fire.getImage());
+
+        if (heroes.size() < account.getMap().getLimitationOfSoldiers()) {
+
+            newHero.setImage(hero.getImage());
+            newHero.setFitHeight(100);
+            newHero.setFitWidth(100);
+            newHero.setLayoutX(hero.getLayoutX() + 2);
+            newHero.setLayoutY(hero.getLayoutY() + 2);
+            anchorPane.getChildren().add(newHero);
+
+            //make a hero
+
+            fire1.setFitHeight(100);
+            fire1.setFitWidth(100);
+            fire1.setLayoutX(hero.getLayoutX() + 2);
+            fire1.setLayoutY(hero.getLayoutY() + 2);
+            anchorPane.getChildren().add(fire1);
+            DraggableMaker.makeDraggable(newHero, fire1);
+
+            //make fire
+
+            heroes.add(heroClass);
+            heroImages.add(hero);
+
+            fire1.setVisible(false);
+            if (heroClass instanceof Archer) {
+                ArcherThread archerThread = new ArcherThread(anchorPane, (Archer) heroClass, newHero, buildingsImage, fire1, event);
+                Thread thread=new Thread(archerThread);
+                thread.start();
+            } else if (heroClass instanceof Barbarin) {
+                fire1.setVisible(false);
+                BarbarianThread barbarianThread=new BarbarianThread(anchorPane, (Barbarin) heroClass, newHero, buildingsImage, fire1, event);
+                Thread thread=new Thread(barbarianThread);
+                thread.start();
+            } else if (heroClass instanceof Giant) {
+                GiantThread giantThread=new GiantThread(anchorPane, (Giant) heroClass, newHero, buildingsImage, fire1, event);
+                Thread thread=new Thread(giantThread);
+                thread.start();
+            } else if (heroClass instanceof Goblin) {
+                fire1.setVisible(false);
+                GoblinThread goblinThread=new GoblinThread(anchorPane, (Goblin) heroClass, newHero, buildingsImage, fire1, event);
+                Thread thread=new Thread(goblinThread);
+                thread.start();
             }
-            else {
-                this.building=building;
-            }
+
+
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Error!");
+            alert.show();
         }
     }
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+
         switch (account.getMap().getID()) {
             case "cityMap" -> {
                 CityMap cityMap = new CityMap(new Image("city.jpg"));
@@ -130,6 +185,16 @@ public class Start extends Pane implements Initializable {
                 three.setFitHeight(88.0);
                 three.setFitWidth(86.0);
                 three.setImage(new ImageView(new Image("Clash-of-clans-Mortar.png")).getImage());
+
+
+                TownHall townHall = new TownHall(474.0, 278.0, 77.0, 80.0);
+                account.getMap().getBuildings().add(townHall);
+                ArcherTower archerTower = new ArcherTower(577.0, 281.0, 86.0, 53.0);
+                account.getMap().getBuildings().add(archerTower);
+                DefensiveBuilding defensiveBuilding = new DefensiveBuilding(516.0, 342.0, 88.0, 86.0);
+                account.getMap().getBuildings().add(defensiveBuilding);
+
+
             }
             case "greenMap" -> {
                 GreenMap greenMap = new GreenMap(new Image("green.jpg"));
@@ -146,6 +211,11 @@ public class Start extends Pane implements Initializable {
                 two.setFitHeight(88.0);
                 two.setFitWidth(86.0);
                 two.setImage(new ImageView(new Image("Clash-of-clans-Mortar.png")).getImage());
+
+                ArmyBuilding armyBuilding = new ArmyBuilding(511.0, 373.0, 72.0, 86.0);
+                account.getMap().getBuildings().add(armyBuilding);
+                DefensiveBuilding defensiveBuilding = new DefensiveBuilding(501.0, 287.0, 88.0, 86.0);
+                account.getMap().getBuildings().add(defensiveBuilding);
             }
             case "blueMap" -> {
                 BlueMap blueMap = new BlueMap(new Image("blue.jpg"));
@@ -169,6 +239,13 @@ public class Start extends Pane implements Initializable {
                 three.setFitHeight(88.0);
                 three.setFitWidth(86.0);
                 three.setImage(new ImageView(new Image("Clash-of-clans-Mortar.png")).getImage());
+
+                ArmyBuilding armyBuilding = new ArmyBuilding(602.0, 372.0, 72.0, 86.0);
+                account.getMap().getBuildings().add(armyBuilding);
+                ArcherTower archerTower = new ArcherTower(530.0, 297.0, 68.0, 77.0);
+                account.getMap().getBuildings().add(archerTower);
+                DefensiveBuilding defensiveBuilding = new DefensiveBuilding(602.0, 280.0, 88.0, 86.0);
+                account.getMap().getBuildings().add(defensiveBuilding);
             }
             case "iceMap" -> {
                 IceMap iceMap = new IceMap(new Image("ice.jpg"));
@@ -192,8 +269,28 @@ public class Start extends Pane implements Initializable {
                 three.setFitWidth(80.0);
 
                 three.setImage(new ImageView(new Image("town_hall_level11_ingame_icon.png")).getImage());
+
+
+                ArmyBuilding armyBuilding = new ArmyBuilding(556.0, 307.0, 72.0, 86.0);
+                account.getMap().getBuildings().add(armyBuilding);
+                TownHall townHall = new TownHall(457.0, 304.0, 77.0, 80.0);
+                account.getMap().getBuildings().add(townHall);
+                TownHall townHall1 = new TownHall(511.0, 361.0, 77.0, 80.0);
+                account.getMap().getBuildings().add(townHall1);
             }
         }
 
+        buildingsImage.add(one);
+        buildingsImage.add(two);
+        buildingsImage.add(three);
+
+
+//        ImageView fire1 = new ImageView();
+//        fire1.setImage(fire.getImage());
+//        for (Building building : account.getMap().getBuildings()) {
+//            BuildingThread buildingThread = new BuildingThread(anchorPane,fire1, building);
+//            Thread thread = new Thread(buildingThread);
+//            thread.start();
+//        }
     }
 }

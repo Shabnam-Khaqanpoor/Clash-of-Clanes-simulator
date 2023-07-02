@@ -9,7 +9,7 @@ public class Barbarin extends Hero{
     static final long speed = 5000;
     static final int power = 80;
     static final AttackType attackType =AttackType.DEFENSIVE;
-    static final int attackRadius=0;
+    static final int attackRadius=50;
     static final int health = 800;
     static final long attackStream = 3000;
     public Barbarin() {
@@ -19,6 +19,11 @@ public class Barbarin extends Hero{
     @Override
     public long getAttackStream() {
         return super.getAttackStream();
+    }
+
+    @Override
+    public void setHealth(int health) {
+        super.setHealth(health);
     }
 
     @Override
