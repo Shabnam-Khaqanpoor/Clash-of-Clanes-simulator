@@ -1,36 +1,19 @@
 package com.example.game.controller.heroThreads;
 
-import com.example.game.HelloApplication;
 import com.example.game.Start;
-import com.example.game.controller.AttackThread;
 import com.example.game.model.hero.Archer;
-import com.example.game.model.hero.Goblin;
 import com.example.game.model.map.building.Building;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.Objects;
-import java.util.ResourceBundle;
-
-import static java.lang.Thread.sleep;
 
 public class ArcherThread implements Runnable {
 
 
-    ActionEvent event;
 
     Archer heroClass;
 
@@ -46,15 +29,12 @@ public class ArcherThread implements Runnable {
     ImageView buildingImage;
 
     int index;
-    AnchorPane anchorPane;
 
-    public ArcherThread(AnchorPane anchorPane, Archer heroClass, ImageView hero, ArrayList<ImageView> buildingsImage, ImageView fire1, ActionEvent event) {
+    public ArcherThread(Archer heroClass, ImageView hero, ArrayList<ImageView> buildingsImage, ImageView fire1) {
         this.heroClass = heroClass;
         this.hero = hero;
         this.buildingsImage = buildingsImage;
         this.fire1 = fire1;
-        this.anchorPane = anchorPane;
-        this.event = event;
     }
 
     void byDistance() {

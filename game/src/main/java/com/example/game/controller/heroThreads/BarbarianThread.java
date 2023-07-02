@@ -1,32 +1,19 @@
 package com.example.game.controller.heroThreads;
 
-import com.example.game.HelloApplication;
 import com.example.game.Start;
 import com.example.game.model.hero.Barbarin;
 import com.example.game.model.map.building.Building;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Objects;
-
-import static java.lang.Thread.sleep;
 
 public class BarbarianThread implements Runnable {
 
 
-    ActionEvent event;
-
-    int counter;
 
     Barbarin heroClass;
 
@@ -42,15 +29,12 @@ public class BarbarianThread implements Runnable {
     ImageView buildingImage;
 
     int index;
-    AnchorPane anchorPane;
 
-    public BarbarianThread(AnchorPane anchorPane, Barbarin heroClass, ImageView hero, ArrayList<ImageView> buildingsImage, ImageView fire, ActionEvent event) {
+    public BarbarianThread(Barbarin heroClass, ImageView hero, ArrayList<ImageView> buildingsImage, ImageView fire) {
         this.heroClass = heroClass;
         this.hero = hero;
         this.buildingsImage = buildingsImage;
         this.fire = fire;
-        this.anchorPane = anchorPane;
-        this.event = event;
     }
 
     void byDistance() {

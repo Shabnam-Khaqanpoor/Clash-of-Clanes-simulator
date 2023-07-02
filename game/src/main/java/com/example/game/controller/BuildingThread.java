@@ -1,86 +1,92 @@
 package com.example.game.controller;
 
-import com.example.game.HelloApplication;
 import com.example.game.Start;
-import com.example.game.model.hero.AttackType;
+import com.example.game.model.hero.Hero;
 import com.example.game.model.map.building.Building;
 import javafx.animation.TranslateTransition;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
 
 public class BuildingThread implements Runnable {
-    AnchorPane anchorPane;
-    int counter;
+
+    int index;
 
     ImageView fire1;
     Building building;
 
-    public BuildingThread(AnchorPane anchorPane,ImageView fire1, Building building) {
-        this.anchorPane = anchorPane;
+    ImageView heroImage;
+
+    Hero heroClass;
+
+
+    public BuildingThread(ImageView fire1, Building building) {
         this.fire1 = fire1;
         this.building = building;
     }
 
     void findHero() {
+        double closestDistance = Double.MAX_VALUE;
         for (int i = 0; i < Start.heroes.size(); i++) {
-            if (Start.heroes.get(i).getAttackType() == AttackType.ATTACK) {
-                counter = i;
-                break;
-            } else {
-                counter = i;
+            double distance = Math.sqrt(Math.pow(Start.heroImages.get(i).getLayoutX() - Start.buildingsImage.get(i).getLayoutX(), 2) +
+                    Math.pow(Start.heroImages.get(i).getLayoutY() - Start.buildingsImage.get(i).getLayoutY(), 2));
+            if (distance < closestDistance) {
+                this.heroImage = Start.heroImages.get(i);
+                this.index = i;
+                this.heroClass = Start.heroes.get(i);
+                closestDistance = distance;
             }
         }
-    }
 
-    void buildingAttack(ImageView hero) throws IOException {
+        //find close hero
+        try {
+            computing();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        this.fire1.setVisible(true);
         this.fire1.setFitHeight(50);
         this.fire1.setFitWidth(50);
-        this.fire1.setLayoutX(building.getX());
-        this.fire1.setLayoutY(building.getY());
-        anchorPane.getChildren().add(this.fire1);
-
-
-        fire1.setVisible(true);
-        TranslateTransition transition = new TranslateTransition();
-        transition.setNode(fire1);
-        transition.setDuration(Duration.millis(building.getAttackStream()));
-        transition.setCycleCount(1);
-        transition.setToX(hero.getLayoutX() - building.getX());
-        transition.setToY(hero.getLayoutY() - building.getY());
-        transition.play();
-
+        this.fire1.setLayoutX(this.building.getX());
+        this.fire1.setLayoutY(this.building.getY());
+        moveFire();
     }
+
+
+    void moveFire() {
+
+        TranslateTransition transition = new TranslateTransition();
+        transition.setNode(this.fire1);
+        transition.setDuration(Duration.millis(this.heroClass.getAttackStream()));
+        transition.setCycleCount(20);
+        transition.setAutoReverse(true);
+        transition.setToX(this.heroImage.getLayoutX() - Start.buildingsImage.get(index).getLayoutX());
+        transition.setToY(this.heroImage.getLayoutY() - Start.buildingsImage.get(index).getLayoutY());
+        transition.play();
+        transition.setOnFinished(e -> this.fire1.setVisible(false));
+    }
+
+    //move fire to  hero
 
     void computing() throws IOException {
 
-        int health = Start.heroes.get(counter).getHealth();
-        Start.heroes.get(counter).setHealth(health - building.getPower());
-        if (Start.heroes.get(counter).getHealth() <= 0) {
-            Start.heroImages.get(counter).setVisible(false);
-            fire1.setVisible(false);
-            Start.heroes.remove(Start.heroes.get(counter));
-            findHero();
+        int health = this.heroClass.getHealth();
+        this.heroClass.setHealth(health - this.building.getPower());
+        Start.heroes.get(index).setHealth(this.heroClass.getHealth());
+        if (this.heroClass.getHealth() <= 0) {
+            this.heroImage.setVisible(false);
+            Start.heroes.remove(this.heroClass);
+            Start.heroImages.remove(this.heroImage);
         }
 
         fire1.setVisible(false);
     }
 
 
-
     @Override
     public void run() {
         findHero();
-        try {
-            buildingAttack(Start.heroImages.get(counter));
-            computing();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
     }
 }
