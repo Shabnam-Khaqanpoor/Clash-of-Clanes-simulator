@@ -78,11 +78,6 @@ public class BuildingThread implements Runnable {
 
     @Override
     public void run() {
-        try {
-            Thread.sleep(4000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
         while (!Start.lose && !Start.win) {
             try {
                 Thread.sleep(3000);

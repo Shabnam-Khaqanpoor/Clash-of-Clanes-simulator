@@ -196,7 +196,7 @@ public class Start implements Initializable {
             if (heroClass instanceof Archer) {
                 ArcherThread archerThread = new ArcherThread((Archer) heroClass, newHero, fire1);
                 Thread thread = new Thread(archerThread);
-                    thread.start();
+                thread.start();
 
             } else if (heroClass instanceof Barbarin) {
                 fire1.setVisible(false);
@@ -208,12 +208,12 @@ public class Start implements Initializable {
                 GiantThread giantThread = new GiantThread((Giant) heroClass, newHero, fire1);
                 Thread thread = new Thread(giantThread);
                 thread.start();
+            } else if (heroClass instanceof Goblin) {
+                fire1.setVisible(false);
+                GoblinThread goblinThread = new GoblinThread((Goblin) heroClass, newHero, fire1);
+                Thread thread = new Thread(goblinThread);
+                thread.start();
             }
-        } else if (heroClass instanceof Goblin) {
-            fire1.setVisible(false);
-            GoblinThread goblinThread = new GoblinThread((Goblin) heroClass, newHero, fire1);
-            Thread thread = new Thread(goblinThread);
-            thread.start();
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("Error!");
