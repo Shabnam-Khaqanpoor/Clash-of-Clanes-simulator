@@ -12,6 +12,8 @@ import java.util.ArrayList;
 
 public class BarbarianThread implements Runnable {
 
+    boolean find;
+
 
     Barbarin heroClass;
 
@@ -36,17 +38,24 @@ public class BarbarianThread implements Runnable {
 
         double closestDistance = Double.MAX_VALUE;
         for (int i = 0; i < Start.buildingsImage.size(); i++) {
-            double distance = Math.sqrt(Math.pow(Start.buildingsImage.get(i).getLayoutX() - this.hero.getLayoutX(), 2) +
-                    Math.pow(Start.buildingsImage.get(i).getLayoutY() - this.hero.getLayoutY(), 2));
-            if (distance < closestDistance) {
-                this.buildingImage = Start.buildingsImage.get(i);
-                this.index = i;
-                this.building = Start.account.getMap().getBuildings().get(i);
-                closestDistance = distance;
+            this.find = false;
+            if (Start.buildingsImage.get(i).isVisible()) {
+                this.find = true;
+                double distance = Math.sqrt(Math.pow(Start.buildingsImage.get(i).getLayoutX() - this.hero.getLayoutX(), 2) +
+                        Math.pow(Start.buildingsImage.get(i).getLayoutY() - this.hero.getLayoutY(), 2));
+                if (distance < closestDistance) {
+                    this.buildingImage = Start.buildingsImage.get(i);
+                    this.index = i;
+                    this.building = Start.account.getMap().getBuildings().get(i);
+                    closestDistance = distance;
+                }
             }
         }
 
         //find close building
+    }
+
+    void moveHero() {
 
         TranslateTransition transition = new TranslateTransition(Duration.millis(heroClass.getSpeed()), hero);
         transition.setToX(buildingImage.getLayoutX() - hero.getLayoutX() + heroClass.getAttackRadius());
@@ -61,71 +70,21 @@ public class BarbarianThread implements Runnable {
             throw new RuntimeException(e);
         }
 
-
-        try {
-            computing();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
         //move to building
     }
 
 
-     void computing() throws IOException {
+    void computing() throws IOException {
 
         int health = this.building.getHealth();
         this.building.setHealth(health - heroClass.getPower());
-         try {
-             Start.account.getMap().getBuildings().get(index).setHealth(building.getHealth());
-         }catch (IndexOutOfBoundsException e){
-             Start.win=true;
-         }
-        if (this.building.getHealth() <= 0) {
-
-            Start.buildingsImage.remove(this.buildingImage);
-            Start.account.getMap().getBuildings().remove(this.building);
-            this.buildingImage.setVisible(false);
-
-        }
-    }
-
-
-    void firstTime() {
-        hero.setOnMouseReleased(event -> {
-
-            double closestDistance = Double.MAX_VALUE;
-            for (int i = 0; i < Start.buildingsImage.size(); i++) {
-                double distance = Math.sqrt(Math.pow(Start.buildingsImage.get(i).getLayoutX() - this.hero.getLayoutX(), 2) +
-                        Math.pow(Start.buildingsImage.get(i).getLayoutY() - this.hero.getLayoutY(), 2));
-                if (distance < closestDistance) {
-                    this.buildingImage = Start.buildingsImage.get(i);
-                    index = i;
-                    this.building = Start.account.getMap().getBuildings().get(i);
-                    closestDistance = distance;
-                }
-            }
-
-            //find close building
-            TranslateTransition transition = new TranslateTransition(Duration.millis(heroClass.getSpeed()), hero);
-            transition.setToX(buildingImage.getLayoutX() - hero.getLayoutX() + heroClass.getAttackRadius());
-            transition.setToY(buildingImage.getLayoutY() - hero.getLayoutY() + heroClass.getAttackRadius());
-            transition.setCycleCount(1);
-
-            transition.play();
-            transition.setOnFinished(actionEvent -> {
-                try {
-                    computing();
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-            });
-        });
-    }
-
-    void checker() {
-        if (Start.account.getMap().getBuildings().size() == 0||Start.win) {
+        try {
+            Start.account.getMap().getBuildings().get(index).setHealth(building.getHealth());
+        } catch (IndexOutOfBoundsException e) {
             Start.win = true;
+        }
+        if (this.building.getHealth() <= 0) {
+            this.buildingImage.setVisible(false);
         }
     }
 
@@ -133,18 +92,28 @@ public class BarbarianThread implements Runnable {
     @Override
     public void run() {
 
-        firstTime();
-        while (!Start.win && !Start.lose) {
-
+        hero.setOnMouseReleased(e->{
             byDistance();
-            checker();
-
+            if(this.find){
+                moveHero();
+            }else {
+                Start.win=true;
+            }
+        });
+        while (!Start.win && !Start.lose) {
             try {
-                Thread.sleep(3000);
+                Thread.sleep(500);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
-        }
 
+            byDistance();
+            if(this.find){
+                moveHero();
+            }else {
+                Start.win=true;
+            }
+
+        }
     }
 }

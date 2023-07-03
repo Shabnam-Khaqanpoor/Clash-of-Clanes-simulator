@@ -11,6 +11,8 @@ import java.io.IOException;
 
 public class BuildingThread implements Runnable {
 
+    boolean find;
+
     int index;
 
     ImageView fire1;
@@ -29,25 +31,23 @@ public class BuildingThread implements Runnable {
     void findHero() {
         double closestDistance = Double.MAX_VALUE;
         for (int i = 0; i < Start.heroes.size(); i++) {
-            double distance = Math.sqrt(Math.pow(Start.heroImages.get(i).getLayoutX() - Start.buildingsImage.get(i).getLayoutX(), 2) +
-                    Math.pow(Start.heroImages.get(i).getLayoutY() - Start.buildingsImage.get(i).getLayoutY(), 2));
-            if (distance < closestDistance) {
-                this.heroImage = Start.heroImages.get(i);
-                this.index = i;
-                this.heroClass = Start.heroes.get(i);
-                closestDistance = distance;
+            this.find=false;
+            if(Start.heroImages.get(i).isVisible()){
+                this.find=true;
+
+                double distance = Math.sqrt(Math.pow(Start.heroImages.get(i).getLayoutX() - Start.buildingsImage.get(i).getLayoutX(), 2) +
+                        Math.pow(Start.heroImages.get(i).getLayoutY() - Start.buildingsImage.get(i).getLayoutY(), 2));
+                if (distance < closestDistance) {
+                    this.heroImage = Start.heroImages.get(i);
+                    this.index = i;
+                    this.heroClass = Start.heroes.get(i);
+                    closestDistance = distance;
+                }
             }
-        }
+        }}
 
         //find closet hero
-        try {
-            computing();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
 
-        moveFire();
-    }
 
 
     void moveFire() {
@@ -72,34 +72,34 @@ public class BuildingThread implements Runnable {
         Start.heroes.get(index).setHealth(this.heroClass.getHealth());
         if (this.heroClass.getHealth() <= 0) {
             this.heroImage.setVisible(false);
-            Start.heroes.remove(this.heroClass);
-            Start.heroImages.remove(this.heroImage);
-        }
-
-        fire1.setVisible(false);
-    }
-
-    void checker() {
-        if (Start.heroes.size() == 0) {
-            Start.lose = true;
         }
     }
 
 
     @Override
     public void run() {
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         while (!Start.lose && !Start.win) {
             try {
-                Thread.sleep(5000);
+                Thread.sleep(3000);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
             try {
                 findHero();
-            }catch (IndexOutOfBoundsException e){
-                Start.lose=true;
+                if(this.find){
+                    computing();
+                    moveFire();
+                }else {
+                    Start.lose=true;
+                }
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
-            checker();
 
         }
     }

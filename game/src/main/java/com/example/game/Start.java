@@ -32,10 +32,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 
-public class Start extends Pane implements Initializable {
-
-    boolean notif = false;
-
+public class Start implements Initializable {
 
     public static ArrayList<ImageView> buildingsImage = new ArrayList<>();
     public static Player account;
@@ -80,10 +77,10 @@ public class Start extends Pane implements Initializable {
     boolean finish = false;
 
 
-    public void finish() throws IOException {
+    public void finish() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
 
-        if (lose) {
+        if (lose && !finish) {
             finish = true;
             try {
                 saveWinToDatabase(account, PlayerController.onlinePlayer);
@@ -102,7 +99,6 @@ public class Start extends Pane implements Initializable {
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
-
         }
     }
 
@@ -196,40 +192,37 @@ public class Start extends Pane implements Initializable {
             heroes.add(heroClass);
             heroImages.add(newHero);
 
-            Thread thread = new Thread();
-
             fire1.setVisible(false);
             if (heroClass instanceof Archer) {
                 ArcherThread archerThread = new ArcherThread((Archer) heroClass, newHero, fire1);
-                thread = new Thread(archerThread);
-                thread.start();
+                Thread thread = new Thread(archerThread);
+                    thread.start();
 
             } else if (heroClass instanceof Barbarin) {
                 fire1.setVisible(false);
                 BarbarianThread barbarianThread = new BarbarianThread((Barbarin) heroClass, newHero, fire1);
-                thread = new Thread(barbarianThread);
+                Thread thread = new Thread(barbarianThread);
                 thread.start();
+
             } else if (heroClass instanceof Giant) {
                 GiantThread giantThread = new GiantThread((Giant) heroClass, newHero, fire1);
-                thread = new Thread(giantThread);
-                thread.start();
-            } else if (heroClass instanceof Goblin) {
-                fire1.setVisible(false);
-                GoblinThread goblinThread = new GoblinThread((Goblin) heroClass, newHero, fire1);
-                thread = new Thread(goblinThread);
+                Thread thread = new Thread(giantThread);
                 thread.start();
             }
-
-            finish();
-
-
+        } else if (heroClass instanceof Goblin) {
+            fire1.setVisible(false);
+            GoblinThread goblinThread = new GoblinThread((Goblin) heroClass, newHero, fire1);
+            Thread thread = new Thread(goblinThread);
+            thread.start();
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("Error!");
             alert.show();
         }
-    }
 
+        finish();
+
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -371,5 +364,7 @@ public class Start extends Pane implements Initializable {
             thread.start();
 
         }
+
+        finish();
     }
 }

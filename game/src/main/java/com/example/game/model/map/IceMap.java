@@ -13,7 +13,7 @@ public class IceMap extends Map {
 
     public static final String ID = "iceMap";
     private ArrayList<Building> buildings = new ArrayList<>();
-    private static final int limitationOfSoldiers=4;
+    private static final int limitationOfSoldiers=6;
 
     public IceMap(Image mapImage) {
         super(mapImage, ID);

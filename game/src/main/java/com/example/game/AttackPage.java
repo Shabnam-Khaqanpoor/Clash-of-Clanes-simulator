@@ -29,7 +29,6 @@ public class AttackPage implements Initializable {
     @FXML
     private ImageView map;
 
-
     @FXML
     private Text account;
 
