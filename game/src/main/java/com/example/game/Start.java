@@ -223,9 +223,6 @@ public class Start extends Pane implements Initializable {
             finish();
 
 
-            finish();
-
-
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("Error!");
