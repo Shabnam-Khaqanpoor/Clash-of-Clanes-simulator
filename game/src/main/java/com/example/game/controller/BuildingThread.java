@@ -92,7 +92,7 @@ public class BuildingThread implements Runnable {
 
 
     @Override
-     public void run() {
+     synchronized public void run() {
         while (!Start.lose && !Start.win) {
             try {
                 Thread.sleep(500);
