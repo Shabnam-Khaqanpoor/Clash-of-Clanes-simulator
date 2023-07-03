@@ -9,7 +9,7 @@ public class ArcherTower extends Building{
 
     static final BuildingType buildingType=BuildingType.DEFENSIVE;
     static final int health=7000;
-    static final int power=500;
+    static final int power=200;
     static final int attackRadius=10;
     static final long attackStream=2000;
 

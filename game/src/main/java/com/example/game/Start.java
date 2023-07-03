@@ -357,10 +357,15 @@ public class Start extends Pane implements Initializable {
         }
 
 
-        ImageView fire1 = new ImageView();
-        fire1.setImage(fire.getImage());
-
         for (Building building : account.getMap().getBuildings()) {
+            ImageView fire1 = new ImageView();
+            fire1.setImage(fire.getImage());
+            fire1.setVisible(true);
+            fire1.setFitHeight(50);
+            fire1.setFitWidth(50);
+            fire1.setLayoutX(building.getX());
+            fire1.setLayoutY(building.getY());
+            anchorPane.getChildren().add(fire1);
             BuildingThread buildingThread = new BuildingThread(fire1, building);
             Thread thread = new Thread(buildingThread);
             thread.start();

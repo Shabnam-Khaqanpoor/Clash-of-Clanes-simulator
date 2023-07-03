@@ -3,7 +3,7 @@ package com.example.game.model.hero;
 
 public class Archer extends Hero {
     static final long speed = 10000;
-    static final int power = 50;
+    static final int power =500;
     static final AttackType attackType =AttackType.ATTACK;
     static final int attackRadius= 150;
     static final int health = 1000;

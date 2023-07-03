@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class Goblin extends Hero{
 
     static final long speed = 8000;
-    static final int power = 120;
+    static final int power = 400;
     static final AttackType attackType =AttackType.DEFENSIVE;
     static final int attackRadius= 50;
     static final int health =500;

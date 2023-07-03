@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class Giant extends Hero{
 
     static final long speed = 7000;
-    static final int power = 70;
+    static final int power = 200;
     static final AttackType attackType =AttackType.ATTACK;
     static final int attackRadius= 100;
     static final int health = 600;

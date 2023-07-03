@@ -39,18 +39,13 @@ public class BuildingThread implements Runnable {
             }
         }
 
-        //find close hero
+        //find closet hero
         try {
             computing();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
-        this.fire1.setVisible(true);
-        this.fire1.setFitHeight(50);
-        this.fire1.setFitWidth(50);
-        this.fire1.setLayoutX(this.building.getX());
-        this.fire1.setLayoutY(this.building.getY());
         moveFire();
     }
 

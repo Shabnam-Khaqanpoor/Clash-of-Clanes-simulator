@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class Barbarin extends Hero{
 
     static final long speed = 5000;
-    static final int power = 80;
+    static final int power = 300;
     static final AttackType attackType =AttackType.DEFENSIVE;
     static final int attackRadius=50;
     static final int health = 800;

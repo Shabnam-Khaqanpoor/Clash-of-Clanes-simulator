@@ -9,7 +9,7 @@ public class ArmyBuilding extends Building{
 
     static final BuildingType buildingType=BuildingType.DEFENSIVE;
     static final int health=5000;
-    static final int power=200;
+    static final int power=100;
 
     static final int attackRadius=5;
     static final long attackStream=1000;
