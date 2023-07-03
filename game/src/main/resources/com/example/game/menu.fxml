@@ -4,6 +4,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.game.MenuPage">
@@ -25,21 +26,12 @@
                   <Image url="@back+previous+icon-1320186815821271691.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="55.0" fitWidth="65.0" layoutX="1246.0" layoutY="162.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@attack-icon-8.jpg" />
-               </image>
-            </ImageView>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="316.0" layoutX="1203.0" layoutY="122.0" opacity="0.26" stroke="BLACK" strokeType="INSIDE" width="308.0" />
             <Button layoutX="1334.0" layoutY="162.0" mnemonicParsing="false" onMouseClicked="#onAttack" prefHeight="55.0" prefWidth="129.0" style="-fx-background-color: dark; -fx-border-color: black;" text="Attack!">
                <font>
                   <Font name="Sylfaen" size="24.0" />
                </font>
             </Button>
-            <ImageView fitHeight="71.0" fitWidth="65.0" layoutX="1241.0" layoutY="252.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@map-131983784333970726.png" />
-               </image>
-            </ImageView>
             <Button layoutX="1334.0" layoutY="252.0" mnemonicParsing="false" onMouseClicked="#onMaps" prefHeight="55.0" prefWidth="129.0" style="-fx-background-color: dark; -fx-border-color: black;" text="Maps!">
                <font>
                   <Font name="Sylfaen" size="24.0" />
@@ -50,19 +42,30 @@
                   <Font name="Sylfaen" size="24.0" />
                </font>
             </Button>
-            <ImageView fitHeight="137.0" fitWidth="145.0" layoutX="33.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="55.0" fitWidth="65.0" layoutX="1246.0" layoutY="162.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@img_568656.png" />
+                  <Image url="@attack-icon-8.jpg" />
                </image>
             </ImageView>
+            <ImageView fitHeight="71.0" fitWidth="65.0" layoutX="1241.0" layoutY="252.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@map-131983784333970726.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="104.0" fitWidth="121.0" layoutX="1222.0" layoutY="324.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@download.png" />
+               </image>
+            </ImageView>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="178.0" layoutX="22.0" layoutY="14.0" opacity="0.26" stroke="BLACK" strokeType="INSIDE" width="349.0" />
             <Button layoutX="212.0" layoutY="79.0" mnemonicParsing="false" onMouseClicked="#onProfile" prefHeight="55.0" prefWidth="129.0" style="-fx-background-color: dark; -fx-border-color: black;" text="Profile!">
                <font>
                   <Font name="Sylfaen" size="24.0" />
                </font>
             </Button>
-            <ImageView fitHeight="104.0" fitWidth="121.0" layoutX="1222.0" layoutY="324.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="137.0" fitWidth="145.0" layoutX="33.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@download.png" />
+                  <Image url="@img_568656.png" />
                </image>
             </ImageView>
          </children>

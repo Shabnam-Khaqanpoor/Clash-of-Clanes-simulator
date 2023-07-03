@@ -4,20 +4,14 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane fx:id="anchorPane" prefHeight="835.0" prefWidth="1535.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.game.Start">
    <children>
-      <ImageView fitHeight="971.0" fitWidth="1553.0" layoutX="5.0" layoutY="-54.0" opacity="0.6" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@1396197[60].jpg" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="map" fitHeight="863.0" fitWidth="1123.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="one" fitHeight="77.0" fitWidth="80.0" layoutX="466.0" layoutY="283.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="two" fitHeight="86.0" fitWidth="53.0" layoutX="569.0" layoutY="286.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="three" fitHeight="88.0" fitWidth="86.0" layoutX="508.0" layoutY="347.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="map" fitHeight="1232.0" fitWidth="1909.0" layoutX="-20.0" layoutY="-139.0" opacity="0.94" pickOnBounds="true" preserveRatio="true" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#284c6e" height="845.0" layoutX="1234.0" layoutY="-1.0" opacity="0.26" stroke="BLACK" strokeType="INSIDE" width="323.0" />
       <ImageView fx:id="archer" fitHeight="172.0" fitWidth="178.0" layoutX="1281.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@5b4eee34c051e602a568ce17.png" />
@@ -38,15 +32,18 @@
             <Image url="@27800-4-clash-of-clans-transparent-background.png" />
          </image>
       </ImageView>
+      <Button layoutX="1403.0" layoutY="107.0" mnemonicParsing="false" onAction="#onArcher" style="-fx-background-color: dark; -fx-border-color: black;" text="Archer" textFill="#afff00" />
+      <Button layoutX="1443.0" layoutY="308.0" mnemonicParsing="false" onAction="#onGoblin" style="-fx-background-color: dark; -fx-border-color: black;" text="Goblin" textFill="#67cf48" />
+      <Button layoutX="1403.0" layoutY="540.0" mnemonicParsing="false" onAction="#onGiant" style="-fx-background-color: dark; -fx-border-color: black;" text="Giant" textFill="#ff8800" />
+      <Button layoutX="1392.0" layoutY="757.0" mnemonicParsing="false" onAction="#onBarbarian" style="-fx-background-color: dark; -fx-border-color: black;" text="Barbarian" textFill="#ccc821" />
+      <ImageView fx:id="one" fitHeight="77.0" fitWidth="80.0" layoutX="466.0" layoutY="283.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="two" fitHeight="86.0" fitWidth="53.0" layoutX="569.0" layoutY="286.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="three" fitHeight="88.0" fitWidth="86.0" layoutX="508.0" layoutY="347.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="fire" fitHeight="46.0" fitWidth="53.0" layoutX="1194.0" layoutY="209.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@fire-emoji-icon-free-png.png" />
          </image>
       </ImageView>
-      <Button layoutX="1403.0" layoutY="107.0" mnemonicParsing="false" onAction="#onArcher" style="-fx-background-color: dark; -fx-border-color: black;" text="Archer" />
-      <Button layoutX="1443.0" layoutY="308.0" mnemonicParsing="false" onAction="#onGoblin" style="-fx-background-color: dark; -fx-border-color: black;" text="Goblin" />
-      <Button layoutX="1403.0" layoutY="540.0" mnemonicParsing="false" onAction="#onGiant" style="-fx-background-color: dark; -fx-border-color: black;" text="Giant" />
-      <Button layoutX="1392.0" layoutY="757.0" mnemonicParsing="false" onAction="#onBarbarian" style="-fx-background-color: dark; -fx-border-color: black;" text="Barbarian" />
       <ImageView fx:id="result" fitHeight="938.0" fitWidth="1559.0" layoutX="1.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@result.jpg" />
