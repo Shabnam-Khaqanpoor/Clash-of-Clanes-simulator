@@ -26,7 +26,7 @@ public class BuildingThread implements Runnable {
         this.building = building;
     }
 
-      void findHero() {
+    void findHero() {
         double closestDistance = Double.MAX_VALUE;
         for (int i = 0; i < Start.heroes.size(); i++) {
             double distance = Math.sqrt(Math.pow(Start.heroImages.get(i).getLayoutX() - Start.buildingsImage.get(i).getLayoutX(), 2) +
@@ -84,7 +84,7 @@ public class BuildingThread implements Runnable {
         fire1.setVisible(false);
     }
 
-     void checker() {
+    void checker() {
         if (Start.heroes.size() == 0) {
             Start.lose = true;
         }
@@ -92,14 +92,18 @@ public class BuildingThread implements Runnable {
 
 
     @Override
-     synchronized public void run() {
+    public void run() {
         while (!Start.lose && !Start.win) {
             try {
-                Thread.sleep(500);
+                Thread.sleep(5000);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
-            findHero();
+            try {
+                findHero();
+            }catch (IndexOutOfBoundsException e){
+                Start.lose=true;
+            }
             checker();
 
         }

@@ -173,7 +173,7 @@ public class GiantThread implements Runnable {
             checker();
 
             try {
-                Thread.sleep(50);
+                Thread.sleep(3000);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }

@@ -34,7 +34,7 @@ import java.util.ResourceBundle;
 
 public class Start extends Pane implements Initializable {
 
-    boolean notif=false;
+    boolean notif = false;
 
 
     public static ArrayList<ImageView> buildingsImage = new ArrayList<>();
@@ -194,7 +194,7 @@ public class Start extends Pane implements Initializable {
             //make fire
 
             heroes.add(heroClass);
-            heroImages.add(hero);
+            heroImages.add(newHero);
 
             Thread thread = new Thread();
 
@@ -220,7 +220,7 @@ public class Start extends Pane implements Initializable {
                 thread.start();
             }
 
-                finish();
+            finish();
 
 
             finish();
@@ -260,9 +260,10 @@ public class Start extends Pane implements Initializable {
                 three.setFitWidth(86.0);
                 three.setImage(new ImageView(new Image("Clash-of-clans-Mortar.png")).getImage());
 
+                buildingsImage.add(two);
+                buildingsImage.add(three);
 
-                TownHall townHall = new TownHall(474.0, 278.0, 77.0, 80.0);
-                account.getMap().getBuildings().add(townHall);
+
                 ArcherTower archerTower = new ArcherTower(577.0, 281.0, 86.0, 53.0);
                 account.getMap().getBuildings().add(archerTower);
                 DefensiveBuilding defensiveBuilding = new DefensiveBuilding(516.0, 342.0, 88.0, 86.0);
@@ -285,6 +286,9 @@ public class Start extends Pane implements Initializable {
                 two.setFitHeight(88.0);
                 two.setFitWidth(86.0);
                 two.setImage(new ImageView(new Image("Clash-of-clans-Mortar.png")).getImage());
+
+                buildingsImage.add(one);
+                buildingsImage.add(two);
 
                 ArmyBuilding armyBuilding = new ArmyBuilding(511.0, 373.0, 72.0, 86.0);
                 account.getMap().getBuildings().add(armyBuilding);
@@ -313,6 +317,10 @@ public class Start extends Pane implements Initializable {
                 three.setFitHeight(88.0);
                 three.setFitWidth(86.0);
                 three.setImage(new ImageView(new Image("Clash-of-clans-Mortar.png")).getImage());
+
+                buildingsImage.add(one);
+                buildingsImage.add(two);
+                buildingsImage.add(three);
 
                 ArmyBuilding armyBuilding = new ArmyBuilding(602.0, 372.0, 72.0, 86.0);
                 account.getMap().getBuildings().add(armyBuilding);
@@ -344,30 +352,22 @@ public class Start extends Pane implements Initializable {
 
                 three.setImage(new ImageView(new Image("town_hall_level11_ingame_icon.png")).getImage());
 
-
+                buildingsImage.add(one);
                 ArmyBuilding armyBuilding = new ArmyBuilding(556.0, 307.0, 72.0, 86.0);
                 account.getMap().getBuildings().add(armyBuilding);
-                TownHall townHall = new TownHall(457.0, 304.0, 77.0, 80.0);
-                account.getMap().getBuildings().add(townHall);
-                TownHall townHall1 = new TownHall(511.0, 361.0, 77.0, 80.0);
-                account.getMap().getBuildings().add(townHall1);
+
             }
         }
-
-        buildingsImage.add(one);
-        buildingsImage.add(two);
-        buildingsImage.add(three);
 
 
         ImageView fire1 = new ImageView();
         fire1.setImage(fire.getImage());
-        for (Building building : account.getMap().getBuildings()) {
-            if (building.getBuildingType() == BuildingType.DEFENSIVE) {
-                BuildingThread buildingThread = new BuildingThread(fire1, building);
-                Thread thread = new Thread(buildingThread);
-                thread.start();
 
-            }
+        for (Building building : account.getMap().getBuildings()) {
+            BuildingThread buildingThread = new BuildingThread(fire1, building);
+            Thread thread = new Thread(buildingThread);
+            thread.start();
+
         }
     }
 }

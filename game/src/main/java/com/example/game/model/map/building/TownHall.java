@@ -6,7 +6,7 @@ import javax.swing.*;
 
 public class TownHall extends Building{
     static final BuildingType buildingType=BuildingType.NORMAL;
-    static final int health=900;
+    static final int health=6000;
 
     private double x;
     private double y;

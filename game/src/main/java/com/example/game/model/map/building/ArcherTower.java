@@ -8,10 +8,10 @@ import javax.swing.*;
 public class ArcherTower extends Building{
 
     static final BuildingType buildingType=BuildingType.DEFENSIVE;
-    static final int health=1000;
-    static final int power=100;
+    static final int health=7000;
+    static final int power=500;
     static final int attackRadius=10;
-    static final long attackStream=5000;
+    static final long attackStream=2000;
 
     private double x;
     private double y;
