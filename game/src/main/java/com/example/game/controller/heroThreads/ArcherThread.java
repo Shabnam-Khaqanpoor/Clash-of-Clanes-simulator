@@ -68,7 +68,7 @@ public class ArcherThread implements Runnable {
             this.fire1.setVisible(true);
             this.fire1.setFitHeight(50);
             this.fire1.setFitWidth(50);
-
+            moveFire();
         });
     }
 
@@ -116,7 +116,6 @@ public class ArcherThread implements Runnable {
             byDistance();
             if(this.find){
                 moveHero();
-                moveFire();
             }
             else {
                 Start.win=true;
@@ -131,7 +130,6 @@ public class ArcherThread implements Runnable {
             byDistance();
             if(this.find){
                 moveHero();
-                moveFire();
             }
             else {
                 Start.win=true;

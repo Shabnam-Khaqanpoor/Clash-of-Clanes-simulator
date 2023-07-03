@@ -31,9 +31,9 @@ public class BuildingThread implements Runnable {
     void findHero() {
         double closestDistance = Double.MAX_VALUE;
         for (int i = 0; i < Start.heroes.size(); i++) {
-            this.find=false;
-            if(Start.heroImages.get(i).isVisible()){
-                this.find=true;
+            this.find = false;
+            if (Start.heroImages.get(i).isVisible()) {
+                this.find = true;
 
                 double distance = Math.sqrt(Math.pow(Start.heroImages.get(i).getLayoutX() - Start.buildingsImage.get(i).getLayoutX(), 2) +
                         Math.pow(Start.heroImages.get(i).getLayoutY() - Start.buildingsImage.get(i).getLayoutY(), 2));
@@ -44,10 +44,8 @@ public class BuildingThread implements Runnable {
                     closestDistance = distance;
                 }
             }
-        }}
-
-        //find closet hero
-
+        }
+    }//find closet hero
 
 
     void moveFire() {
@@ -78,7 +76,7 @@ public class BuildingThread implements Runnable {
 
     @Override
     public void run() {
-        while (!Start.lose && !Start.win && this.building.getHealth()>0) {
+        while (!Start.lose && !Start.win && this.building.getHealth() > 0) {
             try {
                 Thread.sleep(3000);
             } catch (InterruptedException e) {
@@ -86,15 +84,15 @@ public class BuildingThread implements Runnable {
             }
             try {
                 findHero();
-                if(this.find){
-                    computing();
+                if (this.find) {
                     moveFire();
-                }else {
-                    Start.lose=true;
+                    computing();
+                } else {
+                    Start.lose = true;
                 }
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-
-        }}
+        }
+    }
 }
