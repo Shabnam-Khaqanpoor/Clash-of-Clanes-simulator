@@ -34,8 +34,8 @@ import java.util.ResourceBundle;
 
 public class Start extends Pane implements Initializable {
 
-    ImageView newHero = new ImageView();
-    ImageView fire1 = new ImageView();
+    boolean notif=false;
+
 
     public static ArrayList<ImageView> buildingsImage = new ArrayList<>();
     public static Player account;
@@ -77,29 +77,27 @@ public class Start extends Pane implements Initializable {
     @FXML
     private ImageView two;
 
-    boolean finish=false;
-
+    boolean finish = false;
 
 
     public void finish() throws IOException {
-        Alert alert=new Alert(Alert.AlertType.INFORMATION);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
 
         if (lose) {
-            finish=true;
+            finish = true;
             try {
                 saveWinToDatabase(account, PlayerController.onlinePlayer);
-                alert.setContentText("Loser!\n"+PlayerController.onlinePlayer.toString()+"\n\n\nWinner!\n"+account.toString());
+                alert.setContentText("Loser!\n" + PlayerController.onlinePlayer.toString() + "\n\n\nWinner!\n" + account.toString());
                 alert.show();
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
 
-        }
-        else if (win && !finish) {
-            finish=true;
+        } else if (win && !finish) {
+            finish = true;
             try {
                 saveWinToDatabase(PlayerController.onlinePlayer, account);
-                alert.setContentText("Winner!\n"+PlayerController.onlinePlayer.toString()+"\n\n\nLoser!\n"+account.toString());
+                alert.setContentText("Winner!\n" + PlayerController.onlinePlayer.toString() + "\n\n\nLoser!\n" + account.toString());
                 alert.show();
             } catch (Exception e) {
                 throw new RuntimeException(e);
@@ -170,25 +168,28 @@ public class Start extends Pane implements Initializable {
     }
 
     void addHero(Hero heroClass, ImageView hero) throws IOException {
-        this.fire1.setImage(fire.getImage());
+        ImageView newHero = new ImageView();
+        ImageView fire1 = new ImageView();
+
+        fire1.setImage(fire.getImage());
 
         if (heroes.size() < account.getMap().getLimitationOfSoldiers()) {
 
-            this.newHero.setImage(hero.getImage());
-            this.newHero.setFitHeight(100);
-            this.newHero.setFitWidth(100);
-            this.newHero.setLayoutX(hero.getLayoutX() + 2);
-            this.newHero.setLayoutY(hero.getLayoutY() + 2);
-            anchorPane.getChildren().add(this.newHero);
+            newHero.setImage(hero.getImage());
+            newHero.setFitHeight(100);
+            newHero.setFitWidth(100);
+            newHero.setLayoutX(hero.getLayoutX() + 2);
+            newHero.setLayoutY(hero.getLayoutY() + 2);
+            anchorPane.getChildren().add(newHero);
 
             //make a hero
 
-            this.fire1.setFitHeight(100);
-            this.fire1.setFitWidth(100);
-            this.fire1.setLayoutX(hero.getLayoutX() + 2);
-            this.fire1.setLayoutY(hero.getLayoutY() + 2);
-            anchorPane.getChildren().add(this.fire1);
-            DraggableMaker.makeDraggable(this.newHero, this.fire1);
+            fire1.setFitHeight(100);
+            fire1.setFitWidth(100);
+            fire1.setLayoutX(hero.getLayoutX() + 2);
+            fire1.setLayoutY(hero.getLayoutY() + 2);
+            anchorPane.getChildren().add(fire1);
+            DraggableMaker.makeDraggable(newHero, fire1);
 
             //make fire
 
@@ -197,51 +198,30 @@ public class Start extends Pane implements Initializable {
 
             Thread thread = new Thread();
 
-            this.fire1.setVisible(false);
+            fire1.setVisible(false);
             if (heroClass instanceof Archer) {
-                ArcherThread archerThread = new ArcherThread((Archer) heroClass, this.newHero, this.fire1);
+                ArcherThread archerThread = new ArcherThread((Archer) heroClass, newHero, fire1);
                 thread = new Thread(archerThread);
                 thread.start();
-                try {
-                    thread.join();
-                    finish();
-                } catch (InterruptedException | IOException e) {
-                    throw new RuntimeException(e);
-                }
 
             } else if (heroClass instanceof Barbarin) {
                 fire1.setVisible(false);
-                BarbarianThread barbarianThread = new BarbarianThread((Barbarin) heroClass, this.newHero, this.fire1);
+                BarbarianThread barbarianThread = new BarbarianThread((Barbarin) heroClass, newHero, fire1);
                 thread = new Thread(barbarianThread);
                 thread.start();
-                try {
-                    thread.join();
-                    finish();
-                } catch (InterruptedException | IOException e) {
-                    throw new RuntimeException(e);
-                }
             } else if (heroClass instanceof Giant) {
-                GiantThread giantThread = new GiantThread((Giant) heroClass, this.newHero, this.fire1);
+                GiantThread giantThread = new GiantThread((Giant) heroClass, newHero, fire1);
                 thread = new Thread(giantThread);
                 thread.start();
-                try {
-                    thread.join();
-                    finish();
-                } catch (InterruptedException | IOException e) {
-                    throw new RuntimeException(e);
-                }
             } else if (heroClass instanceof Goblin) {
                 fire1.setVisible(false);
-                GoblinThread goblinThread = new GoblinThread((Goblin) heroClass, this.newHero, this.fire1);
+                GoblinThread goblinThread = new GoblinThread((Goblin) heroClass, newHero, fire1);
                 thread = new Thread(goblinThread);
                 thread.start();
-                try {
-                    thread.join();
-                    finish();
-                } catch (InterruptedException | IOException e) {
-                    throw new RuntimeException(e);
-                }
             }
+
+                finish();
+
 
             finish();
 
@@ -382,14 +362,11 @@ public class Start extends Pane implements Initializable {
         ImageView fire1 = new ImageView();
         fire1.setImage(fire.getImage());
         for (Building building : account.getMap().getBuildings()) {
-            BuildingThread buildingThread = new BuildingThread(fire1, building);
-            Thread thread = new Thread(buildingThread);
-            thread.start();
+            if (building.getBuildingType() == BuildingType.DEFENSIVE) {
+                BuildingThread buildingThread = new BuildingThread(fire1, building);
+                Thread thread = new Thread(buildingThread);
+                thread.start();
 
-            try {
-                thread.join();
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
             }
         }
     }

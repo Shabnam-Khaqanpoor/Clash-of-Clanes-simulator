@@ -32,7 +32,7 @@ public class ArcherThread implements Runnable {
         this.fire1 = fire1;
     }
 
-    synchronized void byDistance() {
+    void byDistance() {
 
         double closestDistance = Double.MAX_VALUE;
         for (int i = 0; i < Start.buildingsImage.size(); i++) {
@@ -54,12 +54,6 @@ public class ArcherThread implements Runnable {
         transition.setCycleCount(1);
 
         transition.play();
-
-        try {
-            computing();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
 
 
         transition.setOnFinished(actionEvent -> {
@@ -84,6 +78,11 @@ public class ArcherThread implements Runnable {
         transition.setToY(buildingImage.getLayoutY() - hero.getLayoutY());
         transition.play();
         transition.setOnFinished(e -> this.fire1.setVisible(false));
+        try {
+            computing();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 
@@ -91,7 +90,11 @@ public class ArcherThread implements Runnable {
 
         int health = this.building.getHealth();
         this.building.setHealth(health - heroClass.getPower());
-        Start.account.getMap().getBuildings().get(index).setHealth(building.getHealth());
+        try {
+            Start.account.getMap().getBuildings().get(index).setHealth(building.getHealth());
+        }catch (IndexOutOfBoundsException e){
+            Start.win=true;
+        }
         if (this.building.getHealth() <= 0) {
 
             Start.buildingsImage.remove(this.buildingImage);
@@ -100,7 +103,7 @@ public class ArcherThread implements Runnable {
         }
     }
 
-    synchronized void firstTime() {
+    void firstTime() {
         hero.setOnMouseReleased(event -> {
 
             double closestDistance = Double.MAX_VALUE;
@@ -122,12 +125,6 @@ public class ArcherThread implements Runnable {
             transition.setCycleCount(1);
 
             transition.play();
-
-            try {
-                computing();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
             transition.setOnFinished(actionEvent -> {
                 this.fire1.setVisible(true);
                 this.fire1.setFitHeight(50);
@@ -148,12 +145,17 @@ public class ArcherThread implements Runnable {
             transition.setToY(buildingImage.getLayoutY() - hero.getLayoutY());
             transition.play();
             transition.setOnFinished(e -> this.fire1.setVisible(false));
+            try {
+                computing();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         });
     }
 
-    synchronized void checker(){
-        if (Start.account.getMap().getBuildings().size() == 0) {
-            Start.win=true;
+    void checker() {
+        if (Start.account.getMap().getBuildings().size() == 0 || Start.win) {
+            Start.win = true;
         }
     }
 
@@ -163,14 +165,14 @@ public class ArcherThread implements Runnable {
 
         firstTime();
         while (!Start.win && !Start.lose) {
-//            try {
-//                Thread.sleep(500);
-//            } catch (InterruptedException e) {
-//                throw new RuntimeException(e);
-//            }
-
             byDistance();
             checker();
+
+            try {
+                Thread.sleep(50);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 }

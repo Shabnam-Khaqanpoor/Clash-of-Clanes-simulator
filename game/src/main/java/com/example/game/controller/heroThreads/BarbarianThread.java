@@ -32,7 +32,7 @@ public class BarbarianThread implements Runnable {
         this.fire = fire;
     }
 
-    synchronized void byDistance() {
+    void byDistance() {
 
         double closestDistance = Double.MAX_VALUE;
         for (int i = 0; i < Start.buildingsImage.size(); i++) {
@@ -72,11 +72,15 @@ public class BarbarianThread implements Runnable {
     }
 
 
-    void computing() throws IOException {
+     void computing() throws IOException {
 
         int health = this.building.getHealth();
         this.building.setHealth(health - heroClass.getPower());
-        Start.account.getMap().getBuildings().get(index).setHealth(building.getHealth());
+         try {
+             Start.account.getMap().getBuildings().get(index).setHealth(building.getHealth());
+         }catch (IndexOutOfBoundsException e){
+             Start.win=true;
+         }
         if (this.building.getHealth() <= 0) {
 
             Start.buildingsImage.remove(this.buildingImage);
@@ -87,7 +91,7 @@ public class BarbarianThread implements Runnable {
     }
 
 
-    synchronized void firstTime() {
+    void firstTime() {
         hero.setOnMouseReleased(event -> {
 
             double closestDistance = Double.MAX_VALUE;
@@ -119,8 +123,8 @@ public class BarbarianThread implements Runnable {
         });
     }
 
-    synchronized void checker() {
-        if (Start.account.getMap().getBuildings().size() == 0) {
+    void checker() {
+        if (Start.account.getMap().getBuildings().size() == 0||Start.win) {
             Start.win = true;
         }
     }
@@ -131,16 +135,15 @@ public class BarbarianThread implements Runnable {
 
         firstTime();
         while (!Start.win && !Start.lose) {
-//            try {
-//                Thread.sleep(500);
-//            } catch (InterruptedException e) {
-//                throw new RuntimeException(e);
-//            }
 
             byDistance();
-
             checker();
 
+            try {
+                Thread.sleep(50);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
         }
 
     }
