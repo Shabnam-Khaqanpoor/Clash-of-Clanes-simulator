@@ -55,7 +55,7 @@ public class BuildingThread implements Runnable {
         TranslateTransition transition = new TranslateTransition();
         transition.setNode(this.fire1);
         transition.setDuration(Duration.millis(this.heroClass.getAttackStream()));
-        transition.setCycleCount(20);
+        transition.setCycleCount(100);
         transition.setAutoReverse(true);
         transition.setToX(this.heroImage.getLayoutX() - Start.buildingsImage.get(index).getLayoutX());
         transition.setToY(this.heroImage.getLayoutY() - Start.buildingsImage.get(index).getLayoutY());
@@ -78,7 +78,7 @@ public class BuildingThread implements Runnable {
 
     @Override
     public void run() {
-        while (!Start.lose && !Start.win) {
+        while (!Start.lose && !Start.win && this.building.getHealth()>0) {
             try {
                 Thread.sleep(3000);
             } catch (InterruptedException e) {
@@ -96,6 +96,5 @@ public class BuildingThread implements Runnable {
                 throw new RuntimeException(e);
             }
 
-        }
-    }
+        }}
 }

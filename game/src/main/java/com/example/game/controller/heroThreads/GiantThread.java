@@ -81,7 +81,7 @@ public class GiantThread implements Runnable {
         TranslateTransition transition = new TranslateTransition();
         transition.setNode(this.fire1);
         transition.setDuration(Duration.millis(this.heroClass.getAttackStream()));
-        transition.setCycleCount(20);
+        transition.setCycleCount(100);
         transition.setAutoReverse(true);
         transition.setToX(buildingImage.getLayoutX() - hero.getLayoutX());
         transition.setToY(buildingImage.getLayoutY() - hero.getLayoutY());
@@ -127,7 +127,7 @@ public class GiantThread implements Runnable {
                 Start.win=true;
             }
         });
-        while (!Start.win && !Start.lose) {
+        while (!Start.win && !Start.lose&& heroClass.getHealth()>0) {
             try {
                 Thread.sleep(3000);
             } catch (InterruptedException e) {

@@ -77,7 +77,9 @@ public class Start implements Initializable {
     boolean finish = false;
 
 
+
     public void finish() {
+
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
 
         if (lose && !finish) {
@@ -221,12 +223,11 @@ public class Start implements Initializable {
         }
 
         finish();
-
     }
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
 
         switch (account.getMap().getID()) {
             case "cityMap" -> {
@@ -351,6 +352,7 @@ public class Start implements Initializable {
 
 
         for (Building building : account.getMap().getBuildings()) {
+
             ImageView fire1 = new ImageView();
             fire1.setImage(fire.getImage());
             fire1.setVisible(true);
@@ -359,12 +361,11 @@ public class Start implements Initializable {
             fire1.setLayoutX(building.getX());
             fire1.setLayoutY(building.getY());
             anchorPane.getChildren().add(fire1);
+
             BuildingThread buildingThread = new BuildingThread(fire1, building);
             Thread thread = new Thread(buildingThread);
             thread.start();
 
         }
-
-        finish();
     }
 }

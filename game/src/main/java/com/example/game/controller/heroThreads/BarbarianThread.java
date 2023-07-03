@@ -100,7 +100,7 @@ public class BarbarianThread implements Runnable {
                 Start.win=true;
             }
         });
-        while (!Start.win && !Start.lose) {
+        while (!Start.win && !Start.lose&& heroClass.getHealth()>0) {
             try {
                 Thread.sleep(3000);
             } catch (InterruptedException e) {
@@ -113,7 +113,7 @@ public class BarbarianThread implements Runnable {
             }else {
                 Start.win=true;
             }
-
         }
+
     }
 }
