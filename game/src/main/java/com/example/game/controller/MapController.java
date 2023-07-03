@@ -1,16 +1,9 @@
 package com.example.game.controller;
 
 import com.example.game.model.Player;
-import com.example.game.model.map.BlueMap;
-import com.example.game.model.map.CityMap;
-import com.example.game.model.map.GreenMap;
-import com.example.game.model.map.IceMap;
-import javafx.scene.image.Image;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class MapController {
     public static ArrayList<Player> accounts = new ArrayList<>();

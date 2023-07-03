@@ -1,6 +1,5 @@
 package com.example.game;
 
-import com.example.game.controller.AttackThread;
 import com.example.game.controller.BuildingThread;
 import com.example.game.controller.PlayerController;
 import com.example.game.controller.heroThreads.ArcherThread;
@@ -23,8 +22,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.text.Text;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -35,6 +34,9 @@ import java.util.ResourceBundle;
 
 public class Start extends Pane implements Initializable {
 
+    ImageView newHero = new ImageView();
+    ImageView fire1 = new ImageView();
+
     public static ArrayList<ImageView> buildingsImage = new ArrayList<>();
     public static Player account;
 
@@ -43,6 +45,7 @@ public class Start extends Pane implements Initializable {
     public static ArrayList<Hero> heroes = new ArrayList<>();
 
     public static boolean win = false;
+    public static boolean lose = false;
 
     @FXML
     private AnchorPane anchorPane;
@@ -63,9 +66,6 @@ public class Start extends Pane implements Initializable {
     private ImageView goblin;
 
     @FXML
-    private static Text loser;
-
-    @FXML
     private ImageView map;
 
     @FXML
@@ -77,61 +77,50 @@ public class Start extends Pane implements Initializable {
     @FXML
     private ImageView two;
 
-    @FXML
-    private ImageView result;
-
-    @FXML
-    private Text winner;
-
-    public static Player enemy;
+    boolean finish=false;
 
 
-    public void finish() {
 
-        if (enemy == null) {
+    public void finish() throws IOException {
+        Alert alert=new Alert(Alert.AlertType.INFORMATION);
+
+        if (lose) {
+            finish=true;
             try {
-                enemy = Start.account;
-                text(PlayerController.onlinePlayer, enemy);
-                saveWinToDatabase(PlayerController.onlinePlayer, enemy);
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
-
-        } else {
-            try {
-                text(enemy, PlayerController.onlinePlayer);
-                saveWinToDatabase(enemy, PlayerController.onlinePlayer);
+                saveWinToDatabase(account, PlayerController.onlinePlayer);
+                alert.setContentText("Loser!\n"+PlayerController.onlinePlayer.toString()+"\n\n\nWinner!\n"+account.toString());
+                alert.show();
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
 
         }
+        else if (win && !finish) {
+            finish=true;
+            try {
+                saveWinToDatabase(PlayerController.onlinePlayer, account);
+                alert.setContentText("Winner!\n"+PlayerController.onlinePlayer.toString()+"\n\n\nLoser!\n"+account.toString());
+                alert.show();
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
 
-
-        result.setVisible(true);
-        winner.setVisible(true);
-        loser.setVisible(true);
-
+        }
     }
 
-    void text(Player winnerPlayer, Player loserPlayer) {
-        winner.setText("Winner : " + winnerPlayer.toString());
-        loser.setText("Loser : " + loserPlayer.toString());
-    }
+    public void saveWinToDatabase(Player winnerPlayer, Player loserPlayer) throws Exception {
 
-    public void saveWinToDatabase(Player winner, Player loser) throws Exception {
-
-        winner.setWin(winner.getWin() + 1);
-        loser.setLost(loser.getLost() + 1);
+        winnerPlayer.setWin(winnerPlayer.getWin() + 1);
+        loserPlayer.setLost(loserPlayer.getLost() + 1);
 
         Class.forName("com.mysql.cj.jdbc.Driver");
         Connection con = DriverManager.getConnection("jdbc:mysql://localhost/clash-of-clans", "root", "4013623007");
         //connected to the database
-        String sql = "UPDATE `player` SET `win`='" + winner.getWin() + "' WHERE `ID`='" + winner.getID() + "';";
+        String sql = "UPDATE `player` SET `win`='" + winnerPlayer.getWin() + "' WHERE `ID`='" + winnerPlayer.getID() + "';";
         Statement s = con.prepareStatement(sql);
         s.execute(sql);
 
-        String sql2 = "UPDATE `player` SET `lost`='" + loser.getLost() + "' WHERE `ID`='" + loser.getID() + "';";
+        String sql2 = "UPDATE `player` SET `lost`='" + loserPlayer.getLost() + "' WHERE `ID`='" + loserPlayer.getID() + "';";
         Statement s2 = con.prepareStatement(sql2);
         s2.execute(sql2);
         con.close();
@@ -147,61 +136,59 @@ public class Start extends Pane implements Initializable {
 
 
     @FXML
-    void onArcher(ActionEvent event) {
+    void onArcher(ActionEvent event) throws IOException {
         Archer archerClass = new Archer();
-        addHero(archerClass, archer, event);
+        addHero(archerClass, archer);
 
     }
 
 
     @FXML
-    void onBarbarian(ActionEvent event) {
+    void onBarbarian(ActionEvent event) throws IOException {
 
         Barbarin barbarinClass = new Barbarin();
-        addHero(barbarinClass, barbarian, event);
+        addHero(barbarinClass, barbarian);
 
 
     }
 
     //
     @FXML
-    void onGiant(ActionEvent event) {
+    void onGiant(ActionEvent event) throws IOException {
         Giant giantClass = new Giant();
-        addHero(giantClass, giant, event);
+        addHero(giantClass, giant);
 
 
     }
 
     @FXML
-    void onGoblin(ActionEvent event) {
+    void onGoblin(ActionEvent event) throws IOException {
         Goblin goblinClass = new Goblin();
-        addHero(goblinClass, goblin, event);
+        addHero(goblinClass, goblin);
 
 
     }
 
-    void addHero(Hero heroClass, ImageView hero, ActionEvent event) {
-        ImageView newHero = new ImageView();
-        ImageView fire1 = new ImageView();
-        fire1.setImage(fire.getImage());
+    void addHero(Hero heroClass, ImageView hero) throws IOException {
+        this.fire1.setImage(fire.getImage());
 
         if (heroes.size() < account.getMap().getLimitationOfSoldiers()) {
 
-            newHero.setImage(hero.getImage());
-            newHero.setFitHeight(100);
-            newHero.setFitWidth(100);
-            newHero.setLayoutX(hero.getLayoutX() + 2);
-            newHero.setLayoutY(hero.getLayoutY() + 2);
-            anchorPane.getChildren().add(newHero);
+            this.newHero.setImage(hero.getImage());
+            this.newHero.setFitHeight(100);
+            this.newHero.setFitWidth(100);
+            this.newHero.setLayoutX(hero.getLayoutX() + 2);
+            this.newHero.setLayoutY(hero.getLayoutY() + 2);
+            anchorPane.getChildren().add(this.newHero);
 
             //make a hero
 
-            fire1.setFitHeight(100);
-            fire1.setFitWidth(100);
-            fire1.setLayoutX(hero.getLayoutX() + 2);
-            fire1.setLayoutY(hero.getLayoutY() + 2);
-            anchorPane.getChildren().add(fire1);
-            DraggableMaker.makeDraggable(newHero, fire1);
+            this.fire1.setFitHeight(100);
+            this.fire1.setFitWidth(100);
+            this.fire1.setLayoutX(hero.getLayoutX() + 2);
+            this.fire1.setLayoutY(hero.getLayoutY() + 2);
+            anchorPane.getChildren().add(this.fire1);
+            DraggableMaker.makeDraggable(this.newHero, this.fire1);
 
             //make fire
 
@@ -210,43 +197,53 @@ public class Start extends Pane implements Initializable {
 
             Thread thread = new Thread();
 
-            fire1.setVisible(false);
+            this.fire1.setVisible(false);
             if (heroClass instanceof Archer) {
-                ArcherThread archerThread = new ArcherThread((Archer) heroClass, newHero, buildingsImage, fire1);
+                ArcherThread archerThread = new ArcherThread((Archer) heroClass, this.newHero, this.fire1);
                 thread = new Thread(archerThread);
                 thread.start();
+                try {
+                    thread.join();
+                    finish();
+                } catch (InterruptedException | IOException e) {
+                    throw new RuntimeException(e);
+                }
 
             } else if (heroClass instanceof Barbarin) {
                 fire1.setVisible(false);
-                BarbarianThread barbarianThread = new BarbarianThread((Barbarin) heroClass, newHero, buildingsImage, fire1);
+                BarbarianThread barbarianThread = new BarbarianThread((Barbarin) heroClass, this.newHero, this.fire1);
                 thread = new Thread(barbarianThread);
                 thread.start();
+                try {
+                    thread.join();
+                    finish();
+                } catch (InterruptedException | IOException e) {
+                    throw new RuntimeException(e);
+                }
             } else if (heroClass instanceof Giant) {
-                GiantThread giantThread = new GiantThread((Giant) heroClass, newHero, buildingsImage, fire1);
+                GiantThread giantThread = new GiantThread((Giant) heroClass, this.newHero, this.fire1);
                 thread = new Thread(giantThread);
                 thread.start();
+                try {
+                    thread.join();
+                    finish();
+                } catch (InterruptedException | IOException e) {
+                    throw new RuntimeException(e);
+                }
             } else if (heroClass instanceof Goblin) {
                 fire1.setVisible(false);
-                GoblinThread goblinThread = new GoblinThread((Goblin) heroClass, newHero, buildingsImage, fire1);
+                GoblinThread goblinThread = new GoblinThread((Goblin) heroClass, this.newHero, this.fire1);
                 thread = new Thread(goblinThread);
                 thread.start();
-            }
-
-            AttackThread attackThread = new AttackThread();
-            Thread threadA = new Thread(attackThread);
-            threadA.start();
-            try {
-
-                synchronized (threadA) {
+                try {
                     thread.join();
-
-                    if (win) {
-                        finish();
-                    }
+                    finish();
+                } catch (InterruptedException | IOException e) {
+                    throw new RuntimeException(e);
                 }
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
             }
+
+            finish();
 
 
         } else {
@@ -388,6 +385,12 @@ public class Start extends Pane implements Initializable {
             BuildingThread buildingThread = new BuildingThread(fire1, building);
             Thread thread = new Thread(buildingThread);
             thread.start();
+
+            try {
+                thread.join();
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 }

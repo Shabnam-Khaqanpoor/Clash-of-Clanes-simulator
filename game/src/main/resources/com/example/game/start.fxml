@@ -47,22 +47,22 @@
       <Button layoutX="1443.0" layoutY="308.0" mnemonicParsing="false" onAction="#onGoblin" style="-fx-background-color: dark; -fx-border-color: black;" text="Goblin" />
       <Button layoutX="1403.0" layoutY="540.0" mnemonicParsing="false" onAction="#onGiant" style="-fx-background-color: dark; -fx-border-color: black;" text="Giant" />
       <Button layoutX="1392.0" layoutY="757.0" mnemonicParsing="false" onAction="#onBarbarian" style="-fx-background-color: dark; -fx-border-color: black;" text="Barbarian" />
-      <ImageView fx:id="result" fitHeight="788.0" fitWidth="1375.0" layoutX="121.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true" visible="false">
+      <ImageView fx:id="result" fitHeight="938.0" fitWidth="1559.0" layoutX="1.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@result.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="64.0" fitWidth="46.0" layoutX="1499.0" layoutY="14.0" onMouseClicked="#onClose" pickOnBounds="true" preserveRatio="true" visible="false">
+      <ImageView fitHeight="64.0" fitWidth="46.0" layoutX="1481.0" layoutY="14.0" onMouseClicked="#onClose" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@img_79035.png" />
          </image>
       </ImageView>
-      <Text fx:id="winner" layoutX="716.0" layoutY="397.0" strokeType="OUTSIDE" strokeWidth="0.0" visible="false" wrappingWidth="269.3367919921875">
+      <Text fx:id="winner" layoutX="716.0" layoutY="397.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="269.3367919921875">
          <font>
             <Font name="Sylfaen" size="36.0" />
          </font>
       </Text>
-      <Text fx:id="loser" layoutX="1163.0" layoutY="405.0" strokeType="OUTSIDE" strokeWidth="0.0" visible="false" wrappingWidth="269.3367919921875">
+      <Text fx:id="loser" layoutX="1163.0" layoutY="405.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="269.3367919921875">
          <font>
             <Font name="Sylfaen" size="36.0" />
          </font>

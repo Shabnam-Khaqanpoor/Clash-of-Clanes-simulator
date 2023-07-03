@@ -4,12 +4,8 @@ import com.example.game.model.Player;
 import com.example.game.model.map.*;
 import javafx.scene.image.Image;
 
-import java.net.URL;
 import java.sql.*;
 import java.util.Random;
-import java.util.ResourceBundle;
-
-import javafx.fxml.Initializable;
 
 public class PlayerController {
 
