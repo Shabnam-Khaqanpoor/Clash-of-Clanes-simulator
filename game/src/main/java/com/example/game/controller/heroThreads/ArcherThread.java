@@ -78,9 +78,9 @@ public class ArcherThread implements Runnable {
 
         TranslateTransition transition = new TranslateTransition();
         transition.setNode(this.fire1);
-        transition.setDuration(Duration.millis(this.heroClass.getAttackStream()));
         transition.setCycleCount(100);
         transition.setAutoReverse(true);
+        transition.setDuration(Duration.millis(this.heroClass.getAttackStream()));
         transition.setToX(buildingImage.getLayoutX() - hero.getLayoutX());
         transition.setToY(buildingImage.getLayoutY() - hero.getLayoutY());
         transition.play();
@@ -123,7 +123,7 @@ public class ArcherThread implements Runnable {
         });
         while (!Start.win && !Start.lose && heroClass.getHealth()>0) {
             try {
-                Thread.sleep(3000);
+                Thread.sleep(1000);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }

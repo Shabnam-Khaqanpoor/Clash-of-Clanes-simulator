@@ -129,7 +129,7 @@ public class GiantThread implements Runnable {
         });
         while (!Start.win && !Start.lose&& heroClass.getHealth()>0) {
             try {
-                Thread.sleep(3000);
+                Thread.sleep(1000);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }

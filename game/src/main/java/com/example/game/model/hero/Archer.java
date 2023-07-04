@@ -7,7 +7,7 @@ public class Archer extends Hero {
     static final AttackType attackType =AttackType.ATTACK;
     static final int attackRadius= 150;
     static final int health = 1000;
-    static final long attackStream = 5000;
+    static final long attackStream = 3000;
 
     public Archer() {
         super( speed, power, attackType, attackRadius, health, attackStream);

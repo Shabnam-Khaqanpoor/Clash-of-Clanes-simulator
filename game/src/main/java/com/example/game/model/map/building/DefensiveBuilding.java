@@ -12,7 +12,7 @@ public class DefensiveBuilding extends Building{
     static final int power=100;
 
     static final int attackRadius=3;
-    static final long attackStream=3000;
+    static final long attackStream=2000;
 
     private double x;
     private double y;
